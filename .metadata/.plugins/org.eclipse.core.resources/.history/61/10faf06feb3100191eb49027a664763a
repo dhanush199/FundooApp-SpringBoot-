@@ -1,0 +1,9 @@
+package com.bridgelabz.fundoonote.userdao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bridgelabz.fundoonote.usermodel.User;
+
+public interface UserRepository extends JpaRepository<User,Long>{
+
+}

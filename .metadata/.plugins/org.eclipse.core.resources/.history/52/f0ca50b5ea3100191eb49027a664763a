@@ -1,0 +1,10 @@
+package com.bridgelabz.fundoonote.userconfig;
+
+import org.springframework.context.annotation.Bean;
+
+public class ApplicationConfig implements WebSecurityConfigurerAdapter {
+	 @Bean
+	    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+}

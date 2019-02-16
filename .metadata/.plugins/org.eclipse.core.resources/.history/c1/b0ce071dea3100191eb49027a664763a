@@ -1,0 +1,5 @@
+package com.bridgelabz.fundoonote.userservice;
+
+public class UserServiceImpl {
+
+}

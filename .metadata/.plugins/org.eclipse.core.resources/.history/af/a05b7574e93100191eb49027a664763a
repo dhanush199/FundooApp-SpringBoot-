@@ -1,0 +1,7 @@
+package com.bridgelabz.fundoonote.userdao;
+
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+
+public class UserDao extends JpaRepositoriesAutoConfiguration<User,long>{
+
+}

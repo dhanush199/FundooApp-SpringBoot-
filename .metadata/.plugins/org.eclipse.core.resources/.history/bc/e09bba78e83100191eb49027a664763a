@@ -1,0 +1,5 @@
+package com.bridgelabz.fundoonote.usermodel;
+
+public class User {
+
+}
