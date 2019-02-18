@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "User")
 public class User implements Serializable {
@@ -43,6 +44,9 @@ public class User implements Serializable {
 
 	public void setActivationStatus(boolean activationStatus) {
 		this.activationStatus = activationStatus;
+	}
+	public boolean getActivationStatus() {
+		return activationStatus;
 	}
 
 	public int getId() {

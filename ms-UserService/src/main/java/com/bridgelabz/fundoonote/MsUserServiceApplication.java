@@ -2,7 +2,9 @@ package com.bridgelabz.fundoonote;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan("com.bridgelabz.fundoonote")
 @SpringBootApplication
 public class MsUserServiceApplication {
 
