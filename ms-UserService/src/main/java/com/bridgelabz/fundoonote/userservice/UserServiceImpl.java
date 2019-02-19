@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserServiceInf {
 
 	@Autowired
 	private TokenGeneratorInf tokenGenerator;
-
+	
 	public User register(User user,HttpServletRequest request,HttpServletResponse resp) {	
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		if( userRepository.save(user)!=null) {
@@ -77,7 +77,6 @@ public class UserServiceImpl implements UserServiceInf {
 
 	public User updateUser(User user,HttpServletRequest req,HttpServletResponse resp) {
 		User exixtingUser=userRepository.findUserByEmailId(user.getEmailId());
-		System.out.println(exixtingUser.getName());
 		if (exixtingUser != null && bCryptPasswordEncoder.matches(user.getPassword(), exixtingUser.getPassword())) {
 			user.setId(exixtingUser.getId());
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

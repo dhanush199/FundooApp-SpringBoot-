@@ -22,6 +22,7 @@ public class TokenGeneratorImpl implements TokenGeneratorInf {
 		return Jwts.builder().setId(id).claim("roles", "existingUser").setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS256, "secretKey").compact();
 	}
+	
 	@Override
 	public int authenticateToken(String token)
 	{
