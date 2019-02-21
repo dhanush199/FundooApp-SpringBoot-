@@ -56,15 +56,14 @@ public class UserServiceImpl implements UserServiceInf {
 		return null;
 	}
 
-	public User loginUser(User user,HttpServletRequest req,HttpServletResponse resp){
+	public String loginUser(User user,HttpServletRequest req,HttpServletResponse resp){
 		User existingUser=userRepository.findUserByEmailId(user.getEmailId());
 		if (existingUser != null && bCryptPasswordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
 			if(existingUser.isActivationStatus()==true) {
 				System.out.println("User detail is=" + existingUser.getId() + "," + existingUser.getName() + "," + existingUser.getEmailId() + ","
 						+ existingUser.getMobileNumber());
 				String token = tokenGenerator.generateToken(String.valueOf(existingUser.getId()));
-				resp.setHeader("token", token);
-				return existingUser;
+				return token;
 			}
 			else {	
 				String verificationUrl=tokenGenerator.generateUrl("/userverification/", existingUser, req, resp);

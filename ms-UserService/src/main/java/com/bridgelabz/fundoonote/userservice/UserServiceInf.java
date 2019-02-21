@@ -9,7 +9,7 @@ public interface UserServiceInf {
 	
 	User register(User user,HttpServletRequest request,HttpServletResponse resp);
 	User activateUser(String token, HttpServletRequest request);
-	User loginUser(User user,HttpServletRequest req,HttpServletResponse resp);
+	String loginUser(User user,HttpServletRequest req,HttpServletResponse resp);
 	User updateUser(User user,HttpServletRequest req,HttpServletResponse resp);
 	User getUserByEmail( String userToken,HttpServletRequest request,User user,HttpServletResponse resp);
 	User resetPassword(String emailID, HttpServletRequest request,User newPassword);

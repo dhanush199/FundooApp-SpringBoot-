@@ -76,8 +76,11 @@ public class UserController {
 
 	@PostMapping("/loginuser")
 	public ResponseEntity<?> loginUser(@RequestBody User user, HttpServletRequest request, HttpServletResponse resp) {
-		if (userService.loginUser(user, request, resp) != null)
-			return new ResponseEntity<String>("Successfully logged in", HttpStatus.OK);
+		String token=userService.loginUser(user, request, resp);
+		if ( token!= null) {
+			resp.setHeader("token", token);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
 		else
 			return new ResponseEntity<String>(
 					"Please enter the valid details or please activate your account from your emailId",
