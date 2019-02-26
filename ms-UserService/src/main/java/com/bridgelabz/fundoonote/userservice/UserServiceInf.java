@@ -11,8 +11,9 @@ public interface UserServiceInf {
 	User activateUser(String token, HttpServletRequest request);
 	String loginUser(User user,HttpServletRequest req,HttpServletResponse resp);
 	User updateUser(User user,HttpServletRequest req,HttpServletResponse resp);
-	User getUserByEmail( String userToken,HttpServletRequest request,User user,HttpServletResponse resp);
+	User getUserByEmail(HttpServletRequest request,User user,HttpServletResponse resp);
 	User resetPassword(String emailID, HttpServletRequest request,User newPassword);
 	void deleteUser(String token);
+	String getTokenByUserId(HttpServletRequest request, User user, HttpServletResponse resp);
 	//User loadUserByUsername(String username);
 }

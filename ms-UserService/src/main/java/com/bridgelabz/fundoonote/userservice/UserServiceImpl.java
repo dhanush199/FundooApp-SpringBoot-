@@ -27,28 +27,26 @@ public class UserServiceImpl implements UserServiceInf {
 
 	@Autowired
 	private TokenGeneratorInf tokenGenerator;
-	
-	public User register(User user,HttpServletRequest request,HttpServletResponse resp) {	
+
+	public User register(User user, HttpServletRequest request, HttpServletResponse resp) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		if( userRepository.save(user)!=null) {
-			System.out.println("User id is "+user.getId());
-			String id=String.valueOf(user.getId());
-			String token=tokenGenerator.generateToken(id);
+		if (userRepository.save(user) != null) {
+			System.out.println("User id is " + user.getId());
+			String id = String.valueOf(user.getId());
+			String token = tokenGenerator.generateToken(id);
 			resp.setHeader("token", token);
-			String verificationUrl=tokenGenerator.generateUrl("/userverification/", user, request, resp);
+			String verificationUrl = tokenGenerator.generateUrl("/userverification/", user, request, resp);
 			emailService.sendEmail("dhanushsh1995@gmail.com", "Activate User", verificationUrl);
 			return user;
-		}
-		else 
+		} else
 			return null;
 	}
 
 	public User activateUser(String token, HttpServletRequest request) {
-		int id=tokenGenerator.authenticateToken(token);
-		Optional<User> optional=userRepository.findById(id);
-		if(optional.isPresent())
-		{
-			User newUser=optional.get();
+		int id = tokenGenerator.authenticateToken(token);
+		Optional<User> optional = userRepository.findById(id);
+		if (optional.isPresent()) {
+			User newUser = optional.get();
 			newUser.setActivationStatus(true);
 			userRepository.save(newUser);
 			return newUser;
@@ -56,17 +54,17 @@ public class UserServiceImpl implements UserServiceInf {
 		return null;
 	}
 
-	public String loginUser(User user,HttpServletRequest req,HttpServletResponse resp){
-		User existingUser=userRepository.findUserByEmailId(user.getEmailId());
+	public String loginUser(User user, HttpServletRequest req, HttpServletResponse resp) {
+		User existingUser = userRepository.findUserByEmailId(user.getEmailId());
 		if (existingUser != null && bCryptPasswordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-			if(existingUser.isActivationStatus()==true) {
-				System.out.println("User detail is=" + existingUser.getId() + "," + existingUser.getName() + "," + existingUser.getEmailId() + ","
-						+ existingUser.getMobileNumber());
+			if (existingUser.isActivationStatus() == true) {
+				System.out.println("User detail is=" + existingUser.getId() + "," + existingUser.getName() + ","
+						+ existingUser.getEmailId() + "," + existingUser.getMobileNumber());
 				String token = tokenGenerator.generateToken(String.valueOf(existingUser.getId()));
 				return token;
-			}
-			else {	
-				String verificationUrl=tokenGenerator.generateUrl("/userverification/", existingUser, req, resp);
+			} else {
+				String verificationUrl=tokenGenerator.generateUrl("/userverification/",
+						existingUser, req, resp);
 				emailService.sendEmail("dhanushsh1995@gmail.com", "Verification Mail", verificationUrl);
 				return null;
 			}
@@ -74,8 +72,9 @@ public class UserServiceImpl implements UserServiceInf {
 		return null;
 	}
 
-	public User updateUser(User user,HttpServletRequest req,HttpServletResponse resp) {
-		User exixtingUser=userRepository.findUserByEmailId(user.getEmailId());
+	public User updateUser(User user, HttpServletRequest req, HttpServletResponse resp) {
+		User exixtingUser = userRepository.findUserByEmailId(user.getEmailId());
+
 		if (exixtingUser != null && bCryptPasswordEncoder.matches(user.getPassword(), exixtingUser.getPassword())) {
 			user.setId(exixtingUser.getId());
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -87,36 +86,47 @@ public class UserServiceImpl implements UserServiceInf {
 		return null;
 	}
 
-	public User getUserByEmail( String userToken,HttpServletRequest request,User user,HttpServletResponse resp) {
-		User exsistingUser=userRepository.findUserByEmailId(user.getEmailId());
-		if(exsistingUser!=null)
-		{
-			String PasswordResetLink =	tokenGenerator.generateUrl("/resetpassword/", exsistingUser, request, resp);
-			emailService.sendEmail("dhanushsh1995@gmail.com", "Password Reset Link Mail", "please click on this link to reset password "+PasswordResetLink);
+	public User getUserByEmail(HttpServletRequest request, User user, HttpServletResponse resp) {
+		User exsistingUser = userRepository.findUserByEmailId(user.getEmailId());
+		if (exsistingUser != null) {
+			String PasswordResetLink = tokenGenerator.generateUrl("/resetpassword/", exsistingUser, request, resp);
+			emailService.sendEmail("dhanushsh1995@gmail.com", "Password Reset Link Mail",
+					"please click on this link to reset password " + PasswordResetLink);
 		}
 		return exsistingUser;
 	}
 
-	public User resetPassword(String emailID, HttpServletRequest request,User user) {
-		User exsistingUser=userRepository.findUserByEmailId(emailID);
-		if(exsistingUser!=null)
-		{
-			exsistingUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-			userRepository.save( exsistingUser);
+	public String getTokenByUserId(HttpServletRequest request, User user, HttpServletResponse resp) {
+		User exsistingUser = userRepository.findUserByEmailId(user.getEmailId());
+		String token=null;
+		if (exsistingUser != null) {
+			token=tokenGenerator.generateToken(String.valueOf(exsistingUser.getId()));
+			String PasswordResetLink="http://localhost:4200/reset-password/"+token;
+			emailService.sendEmail("dhanushsh1995@gmail.com", "Password Reset Link Mail",
+					"please click on this link to reset password " + PasswordResetLink);
+			}
+			return token;
 		}
-		return exsistingUser;
-	}
-	
-	public void deleteUser(String token) {
-		int userId=tokenGenerator.authenticateToken(token);
-		userRepository.deleteById(userId);
-		
-	}
-	
-	public User loadUserByUsername(String username){
-		System.out.println("hoi");
-		return null;
-		
-	}
 
-}
+		public User resetPassword(String emailID, HttpServletRequest request, User user) {
+			User exsistingUser = userRepository.findUserByEmailId(emailID);
+			if (exsistingUser != null) {
+				exsistingUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+				userRepository.save(exsistingUser);
+			}
+			return exsistingUser;
+		}
+
+		public void deleteUser(String token) {
+			int userId = tokenGenerator.authenticateToken(token);
+			userRepository.deleteById(userId);
+
+		}
+
+		public User loadUserByUsername(String username) {
+			System.out.println("hoi");
+			return null;
+
+		}
+
+	}

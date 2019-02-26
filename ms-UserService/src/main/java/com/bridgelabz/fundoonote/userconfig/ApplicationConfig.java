@@ -21,15 +21,16 @@ public class ApplicationConfig{
 	 public UserValidator getUserValidator() {
 		 return new UserValidator();
 	 }
-	    @SuppressWarnings("deprecation")
+	 @SuppressWarnings("deprecation")
 		@Bean
-	    public WebMvcConfigurer corsConfigurer() {
-	        return new WebMvcConfigurerAdapter() {
-	            @Override
-	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("*")
-	                        .allowedHeaders("*");
-	            }
-	        };
-	    }
+		public WebMvcConfigurer corsConfigurer() {
+			return new WebMvcConfigurerAdapter() {
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE")
+							.allowedHeaders("token", "Content-Type").exposedHeaders("token", "Content-Type")
+							.allowCredentials(false).maxAge(4000);
+				}
+			};
+		}
 }

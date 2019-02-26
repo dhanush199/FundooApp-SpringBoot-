@@ -32,7 +32,6 @@ public class CorsFilterConfig implements Filter{
 		if(servletRequest.getMethod().equalsIgnoreCase("options")) {
 			chain.doFilter(servletRequest, servletResponse);
 		}
-
 	}
 
 	public void destroy() {

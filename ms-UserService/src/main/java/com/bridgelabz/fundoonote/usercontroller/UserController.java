@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -90,7 +91,7 @@ public class UserController {
 	@PostMapping("/updateuser")
 	public ResponseEntity<?> updateUser(@RequestBody User user, HttpServletRequest request, HttpServletResponse resp) {
 		if (userService.updateUser(user, request, resp) != null)
-			return new ResponseEntity<String>("Successfully updated", HttpStatus.OK);
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		else
 			return new ResponseEntity<String>(
 					"Please enter the valid details or please activate your account from your emailId",
@@ -98,22 +99,21 @@ public class UserController {
 	}
 
 	@PostMapping("/forgotpassword")
-	public ResponseEntity<?> forgotPassword(@RequestHeader("token") String token, @RequestBody User user,
+	public ResponseEntity<?> forgotPassword(@RequestBody User user,
 			HttpServletRequest request, HttpServletResponse resp) {
-		System.out.println("we are herwe");
-		User existingUser = userService.getUserByEmail(token, request, user, resp);
-		if (existingUser != null) {
-			return new ResponseEntity<User>(user, HttpStatus.FOUND);
+		String token = userService.getTokenByUserId( request, user, resp);
+		if (token != null) {
+			resp.setHeader("token", token);
+			return new ResponseEntity<Void>(HttpStatus.FOUND);
 		} else {
 			return new ResponseEntity<String>("Email incorrect. Please enter valid email address present in database",
 					HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@PostMapping("/resetpassword/{token:.+}")
+	@PutMapping("/resetpassword/{token:.+}")
 	public ResponseEntity<?> resetPassword(@PathVariable("token") String token, @RequestBody User user,
 			HttpServletRequest request, HttpServletResponse resp) {
-		System.out.println("we are hereeee");
 		User existingUser = userService.resetPassword(user.getEmailId(), request, user);
 		if (existingUser != null) {
 			return new ResponseEntity<User>(user, HttpStatus.FOUND);
@@ -127,13 +127,8 @@ public class UserController {
 	public ResponseEntity<?> deleteUser(@RequestHeader("token") String token, HttpServletRequest request,
 			HttpServletResponse resp) {
 		userService.deleteUser(token);
-
 		return new ResponseEntity<String>("Successfully deleted", HttpStatus.FOUND);
 
 	}
 
-//	try {
-//	} catch( Exception ex ) {
-//	    logger.log( Level.SEVERE, ex.toString(), ex );
-//	}
 }

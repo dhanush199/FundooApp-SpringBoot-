@@ -93,7 +93,6 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.0.1.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -104,5 +103,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
