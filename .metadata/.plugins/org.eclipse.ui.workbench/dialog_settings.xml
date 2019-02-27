@@ -7,8 +7,10 @@
 			<item value="1"/>
 			<item value="1"/>
 			<item value="1"/>
+			<item value="1"/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.springframework.ide.eclipse.boot.dash.views.BootDashView"/>
 			<item value="org.eclipse.ui.views.ProgressView"/>
 			<item value="org.eclipse.ui.views.ResourceNavigator"/>
 			<item value="org.eclipse.ui.console.ConsoleView"/>
@@ -17,8 +19,10 @@
 			<item value="org.eclipse.e4.ui.parts"/>
 			<item value="org.eclipse.e4.ui.parts"/>
 			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
+			<item value="boo"/>
 			<item value="pro"/>
 			<item value="navi"/>
 			<item value="cons"/>

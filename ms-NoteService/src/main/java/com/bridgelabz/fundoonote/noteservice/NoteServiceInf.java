@@ -22,4 +22,6 @@ public interface NoteServiceInf {
 
 	Note getNoteByUserID(int id);
 
+	List<Note> deleteNote1(String token,String title,HttpServletRequest request);
+	
 }
