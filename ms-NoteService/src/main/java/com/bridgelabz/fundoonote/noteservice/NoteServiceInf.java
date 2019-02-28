@@ -12,7 +12,7 @@ public interface NoteServiceInf {
 	
 	Note editNote(String token,Note note,int noteId, HttpServletRequest request);
 	
-	Note deleteNote(String token,int id,HttpServletRequest request);
+	List<Note> deleteNote(String token,int noteId,HttpServletRequest request);
 	
 	List<Note> retrieveNote(String token,HttpServletRequest request);
 
@@ -22,6 +22,6 @@ public interface NoteServiceInf {
 
 	Note getNoteByUserID(int id);
 
-	List<Note> deleteNote1(String token,String title,HttpServletRequest request);
+//	List<Note> deleteNote1(String token,String title,HttpServletRequest request);
 	
 }

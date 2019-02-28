@@ -31,48 +31,35 @@ public class NoteServiceImpl implements NoteServiceInf {
 
 	@Override
 	@Transactional
-	public Note editNote(String token, Note note,int noteId ,HttpServletRequest request) {
+	public Note editNote(String token, Note note,int noteId,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
+		System.out.println("dis "+note.getDiscription());
+		System.out.println("title "+note.getTitle());
 		Note existingNote=noteRepository.getOne(noteId);
 		if(existingNote!=null) {
 			existingNote.setUserId(userId);
-			if(note.getTitle()!=null)
+			if(note.getTitle()!=null) 
 				existingNote.setTitle(note.getTitle());
-			if(note.getDiscription()!=null)
+			if(note.getDiscription()!=null) 
 				existingNote.setDiscription(note.getDiscription());
 			Note updatedNote=noteRepository.save(existingNote);
 			return updatedNote;
 
 		}
-		System.out.println("fail");
-
 		return null;
 	}
 	@Override
-	public Note deleteNote(String token,int noteId,HttpServletRequest request) {
-		int userId=tokenGenerator.authenticateToken(token);
-		//		Note aliveNote=noteRepository.findNoteByUserId(userId);
-		//		if(aliveNote!=null) {
-		//			noteRepository.deleteById(noteId);
-		//			return aliveNote;
-		//		}
-		//		else
-		return null;
-	}
-	////////////////////////////////////
-	@Transactional
-	public List<Note> deleteNote1(String token,String title,HttpServletRequest request) {
+	public List<Note> deleteNote(String token,int noteId,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
 		List<Note> aliveNote=noteRepository.findNoteByUserId(userId);
 		if(aliveNote!=null) {
-			noteRepository.deleteByTitle(title);
+			noteRepository.deleteById(noteId);
 			return aliveNote;
 		}
 		else
 			return null;
 	}
 
-	////////////////////////////////////////////
 	@Override
 	public List<Note> retrieveNote(String token,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
@@ -93,8 +80,7 @@ public class NoteServiceImpl implements NoteServiceInf {
 	}
 
 	public Note getNoteByUserID(int userId){
-		//return noteRepository.findNoteByUserId(userId);
-		return null;
+		return (Note) noteRepository.findNoteByUserId(userId);
 	}
 
 

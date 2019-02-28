@@ -37,8 +37,8 @@ public class NoteController {
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
 	@PutMapping("/editnote")
-	public ResponseEntity<?> editNote(@RequestParam ("noteId")int noteId,@RequestHeader ("token")String token,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
-		if (noteService.editNote(token,note,noteId, request)!=null)
+	public ResponseEntity<?> editNote(@RequestParam ("token")String token,@RequestParam("noteId") int noteId,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
+		if (noteService.editNote(token,note,noteId,request)!=null)
 			return new ResponseEntity<String>("Note Succesfully updated",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
@@ -60,17 +60,17 @@ public class NoteController {
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
-	
-	@PutMapping("/editnote/{token:.+}")
-	public ResponseEntity<?> editNotes(@RequestParam("noteId") int noteId,@RequestParam ("token")String token,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
-		if (noteService.editNote(token,note,noteId, request)!=null)
-			return new ResponseEntity<String>("Note Succesfully updated",HttpStatus.OK);
-		else
-			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
-	}
+//	
+//	@PutMapping("/editnote/{token:.+}")
+//	public ResponseEntity<?> editNotes(@RequestParam("noteId") int noteId,@RequestParam ("token")String token,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
+//		if (noteService.editNote(token,note,noteId, request)!=null)
+//			return new ResponseEntity<String>("Note Succesfully updated",HttpStatus.OK);
+//		else
+//			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
+//	}
 	@DeleteMapping("/delete/{token:.+}")
-	public ResponseEntity<?> delete(@PathVariable ("token") String token,@RequestParam String title,HttpServletRequest request,HttpServletResponse response) {
-		List<Note> notes=noteService.deleteNote1(token,title,request);
+	public ResponseEntity<?> delete(@PathVariable ("token") String token,@RequestParam int noteId,HttpServletRequest request,HttpServletResponse response) {
+	List<Note> notes=noteService.deleteNote(token,noteId,request);
 		if (notes!=null)
 			return new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
 		else
