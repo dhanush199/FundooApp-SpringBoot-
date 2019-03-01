@@ -5,7 +5,20 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-02-27T22:42:00Z</updated>
+  <updated>2019-03-01T03:10:18Z</updated>
+  <entry>
+    <title>Reactor project lead Stéphane Maldini</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/03/01/reactor-project-lead-st-phane-maldini" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-03-01:3590</id>
+    <updated>2019-03-01T03:10:18Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! This week I&amp;rsquo;m excited to sit down and talk with mr. Reactive himself, Reactor project lead Stéphane Maldini. In this interview we talk about the history of the reactive programming for Spring, the Reactor project&amp;rsquo;s evolution over time, from then to now and looking forward.&lt;/p&gt;
+&lt;p&gt;the &lt;a href="http://ProjectReactor.io"&gt;Project Reactor website&lt;/a&gt;&lt;br/&gt;&lt;a href="@smaldini"&gt;Stéphane on Twitter&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/582654270&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;</content>
+  </entry>
   <entry>
     <title>java-cfenv 1.0 RC1 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2019/02/27/java-cfenv-1-0-rc1-released" />
@@ -926,30 +939,5 @@ public CfJdbcEnv cfJdbcEnv() {&#xD;
   &lt;li&gt;I love this example by Robert Roeser &lt;a href="https://github.com/netifi/proteus-spring-kafka-example"&gt;demonstrating RSocket-based RPC, Proteus, and Project Reactor&amp;rsquo;s Kafka client.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;I think this is a pretty interesting discussion of &lt;a href="https://www.excelsiorjet.com/blog/articles/aot-compilation-of-spring-boot-behind-the-scenes/"&gt;AOT Compilation of Spring Boot from the Excelsior JET team blog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Data Flow 1.7.4 and Skipper 1.1.4 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/08/spring-cloud-data-flow-1-7-4-and-skipper-1-1-4-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2019-02-08:3559</id>
-    <updated>2019-02-08T19:41:36Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;The &lt;a href="https://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt; team is pleased to announce the release of &lt;code&gt;1.7.4&lt;/code&gt; of Data Flow for Local and Cloud Foundry.  The Kubernetes release is at version &lt;code&gt;1.7.3&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Follow the &lt;em&gt;Getting Started&lt;/em&gt; guides for running on &lt;a href="https://docs.spring.io/spring-cloud-dataflow/docs/1.7.4.RELEASE/reference/htmlsingle/#getting-started"&gt;Local&lt;/a&gt;, &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-cloudfoundry/docs/1.7.4.RELEASE/reference/htmlsingle/#getting-started"&gt;Cloud Foundry&lt;/a&gt;, and &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-kubernetes/docs/1.7.3.RELEASE/reference/htmlsingle/#kubernetes-getting-started"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Various bugs since the &lt;code&gt;1.7 GA&lt;/code&gt; release have been fixed.  You can see the issues for &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues?q=is%3Aissue+milestone%3A1.7.1.RELEASE+is%3Aclosed"&gt;1.7.1&lt;/a&gt;, &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.7.2.RELEASE+is%3Aclosed+"&gt;1.7.2&lt;/a&gt;, &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.7.3.RELEASE+is%3Aclosed+"&gt;1.7.3&lt;/a&gt;, and &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.7.4.RELEASE+is%3Aclosed+"&gt;1.7.4&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We have also released &lt;code&gt;1.1.4&lt;/code&gt; release of &lt;a href="https://cloud.spring.io/spring-cloud-skipper/"&gt;Spring Cloud Skipper&lt;/a&gt;. The &lt;a href="https://docs.spring.io/spring-cloud-skipper/docs/1.1.4.RELEASE/reference/htmlsingle/#getting-started"&gt;getting started section&lt;/a&gt; in the reference guide is the best place to start if you want to use Skipper separately from Data Flow.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Various bugs since the &lt;code&gt;1.1 GA&lt;/code&gt; have been fixed.  You can see the issues for &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.1.1.RELEASE+is%3Aclosed+"&gt;1.1.1&lt;/a&gt;, &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.1.2.RELEASE+is%3Aclosed+"&gt;1.1.2&lt;/a&gt;, &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue+milestone%3A1.1.3.RELEASE+is%3Aclosed+"&gt;1.1.3&lt;/a&gt;, and &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues?q=is%3Aissue+milestone%3A1.1.4.RELEASE+is%3Aclosed"&gt;1.1.4&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

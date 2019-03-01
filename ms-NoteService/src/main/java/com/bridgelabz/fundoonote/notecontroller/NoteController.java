@@ -38,6 +38,7 @@ public class NoteController {
 	}
 	@PutMapping("/editnote")
 	public ResponseEntity<?> editNote(@RequestParam ("token")String token,@RequestParam("noteId") int noteId,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
+		
 		if (noteService.editNote(token,note,noteId,request)!=null)
 			return new ResponseEntity<String>("Note Succesfully updated",HttpStatus.OK);
 		else

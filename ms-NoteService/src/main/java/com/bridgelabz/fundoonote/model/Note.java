@@ -107,12 +107,21 @@ public class Note implements Serializable {
 		this.isPinned = isPinned;
 	}
 
+	public boolean getPinned() {
+		return isPinned;
+	}
+
+	
 	public boolean isInTrash() {
 		return inTrash;
 	}
 
 	public void setInTrash(boolean inTrash) {
 		this.inTrash = inTrash;
+	}
+	
+	public boolean getInTrash() {
+		return inTrash;
 	}
 
 	public Timestamp getUpdateTime() {

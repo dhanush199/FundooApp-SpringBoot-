@@ -40,6 +40,9 @@ public class NoteServiceImpl implements NoteServiceInf {
 			existingNote.setUserId(userId);
 			if(note.getTitle()!=null) 
 				existingNote.setTitle(note.getTitle());
+//			if(note.isArchive()!=true) 
+//				existingNote.setArchive(true);
+				
 			if(note.getDiscription()!=null) 
 				existingNote.setDiscription(note.getDiscription());
 			Note updatedNote=noteRepository.save(existingNote);
