@@ -30,21 +30,19 @@ public class NoteServiceImpl implements NoteServiceInf {
 	}
 
 	@Override
-	@Transactional
 	public Note editNote(String token, Note note,int noteId,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
-		System.out.println("dis "+note.getDiscription());
-		System.out.println("title "+note.getTitle());
 		Note existingNote=noteRepository.getOne(noteId);
 		if(existingNote!=null) {
 			existingNote.setUserId(userId);
 			if(note.getTitle()!=null) 
-				existingNote.setTitle(note.getTitle());
-//			if(note.isArchive()!=true) 
-//				existingNote.setArchive(true);
-				
+				existingNote.setTitle(note.getTitle());	
 			if(note.getDiscription()!=null) 
 				existingNote.setDiscription(note.getDiscription());
+			if(note.getInTrash()==true) 
+				existingNote.setInTrash(true);
+			else
+				existingNote.setInTrash(false);
 			Note updatedNote=noteRepository.save(existingNote);
 			return updatedNote;
 

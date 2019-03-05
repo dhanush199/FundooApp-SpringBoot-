@@ -5,7 +5,89 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-03-01T03:10:18Z</updated>
+  <updated>2019-03-05T09:45:42Z</updated>
+  <entry>
+    <title>Spring Initializr: new UI</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/03/05/spring-initializr-new-ui" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Damien Vitrac</name>
+    </author>
+    <id>tag:spring.io,2019-03-04:3591</id>
+    <updated>2019-03-05T09:45:42Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I’m happy to announce that &lt;strong&gt;Spring Initializr&lt;/strong&gt; has been updated and is now available on &lt;a href="https://start.spring.io"&gt;start.spring.io&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#a-short-history-of-spring-initializr" class="anchor" name="a-short-history-of-spring-initializr"&gt;&lt;/a&gt;A short history of Spring Initializr&lt;/h2&gt;
+&lt;p&gt;The project started out as a minimal HTML form, letting you generate a Spring Boot application with a few options. It&amp;rsquo;s been well received by the Spring community, so the team added new ways to interact with it, through the command-line or your favorite IDE.&lt;/p&gt;
+&lt;p&gt;After a while, we decided to work on a first revision of the UI. We simplified the form, leaving the essential parts front and center and pushing others in a section hidden by default. Given the number of dependencies, we created a search box to look for available starters.&lt;/p&gt;
+&lt;p&gt;The project is now a popular service and even a library that you can use and extend for your own needs. These days, the Web UI is not even the most popular client, but we&amp;rsquo;re still committed to work and improve the service.&lt;/p&gt;&lt;h2&gt;&lt;a href="#rationale-behind-the-new-web-design" class="anchor" name="rationale-behind-the-new-web-design"&gt;&lt;/a&gt;Rationale behind the new Web design&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s take a look at the updated design.&lt;/p&gt;
+&lt;img src="https://i.imgur.com/SBl70J1.png" /&gt;
+&lt;p&gt;The Spring Initializr team has been tempted many times to add new features and options, or solve new problems. Should we generate complex builds to work around projects&amp;rsquo; limitations? Should we add more opinions around how to build, distribute or run your Spring Boot application in production? Should we turn it in a full-blown Spring Boot starter marketplace?&lt;/p&gt;
+&lt;p&gt;With this new revision, the design in general had a (much needed) refresh and we chose to not display anymore the full list of available dependencies. One could see that list as a way to work around poor project metadata (&lt;a href="https://github.com/spring-io/start.spring.io/commit/359770b9e1e2e92be623788f3bdaecc515af84ee"&gt;we should&lt;/a&gt; &lt;a href="https://github.com/spring-io/start.spring.io/commit/ed082500830091e415cba6b2a99961037de97ed9"&gt;improve those!&lt;/a&gt;) or a lack of discovery mechanism on the spring.io website (&lt;a href="https://github.com/spring-io/sagan/issues/893"&gt;we should fix that!&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;While we recognize its current limitations, we feel that &amp;ldquo;quickly bootstrapping a Spring Boot application that just runs&amp;rdquo; is still the core promise of our service and developers should know what type of application they want to build when creating a project.&lt;br/&gt;Still, we think that the Spring Boot team could do more about helping developers to grow and update their applications, so we&amp;rsquo;re working on expanding what Spring Initializr can do (see our&lt;br/&gt;&lt;a href="https://spring.io/blog/2019/02/20/what-s-new-with-spring-initializr"&gt;previous blog post&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This new revision is a new step towards more changes on &lt;a href="https://start.spring.io"&gt;start.spring.io&lt;/a&gt;, so stay tuned!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>java-cfenv 1.0 GA Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/03/04/java-cfenv-1-0-ga-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mark Pollack</name>
+    </author>
+    <id>tag:spring.io,2019-03-04:3593</id>
+    <updated>2019-03-04T22:11:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;The java-cfenv library is a new library for accessing Cloud Foundry Services.  For Spring Boot users, it extracts service credentials from the &lt;code&gt;VCAP_SERVICES&lt;/code&gt; environment variable and sets well known Spring Boot auto-configuration properties.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can find more about it in the &lt;a href="https://spring.io/blog/2019/02/15/introducing-java-cfenv-a-new-library-for-accessing-cloud-foundry-services"&gt;1.0 M1 release blog&lt;/a&gt; as well as the &lt;a href="https://github.com/pivotal-cf/java-cfenv/blob/master/README.adoc"&gt;README&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this release the following Cloud Foundry Services are supported&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Databases - DB2, MySQL, Oracle, Postgresql, SqlServer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RabbitMQ&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cassandara&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MongoDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pivotal Single Sign On&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Of note, there is a new interface, &lt;a href="https://github.com/pivotal-cf/java-cfenv/blob/master/java-cfenv-boot/src/main/java/io/pivotal/cfenv/spring/boot/CfEnvProcessor.java"&gt;CfEnvProcessor&lt;/a&gt; that simplifies what you need to write in order to provide integration with other Cloud Foundry services.  The docs on &lt;a href="https://github.com/pivotal-cf/java-cfenv#supporting-other-services"&gt;supporting other services&lt;/a&gt; has the details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The 1.0 release is available in maven central through the dependency&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;io.pivotal.cfenv&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;java-cfenv-boot&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;1.0.0.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We will be releasing a 1.0.1.RELEASE shortly to fix issues in config server client configuration when using Pivotal Spring Cloud Services tile.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thanks to &lt;a href="https://spring.io/team/scottfrederick"&gt;Scott Frederick&lt;/a&gt; and &lt;a href="https://spring.io/team/dturanski"&gt;David Turanski&lt;/a&gt; for their contributions!&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Reactor project lead Stéphane Maldini</title>
     <link rel="alternate" href="https://spring.io/blog/2019/03/01/reactor-project-lead-st-phane-maldini" />
@@ -101,7 +183,7 @@
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2019-02-26:3586</id>
-    <updated>2019-02-26T22:02:59Z</updated>
+    <updated>2019-02-26T22:02:00Z</updated>
     <content type="html">&lt;p&gt;Hi Spring fans! What a week! This week I&amp;rsquo;m in San Francisco, CA; Columbus, OH (for the &lt;a href="https://springonetour.io/2019/columbus"&gt;epic SpringOne Tour stop there&lt;/a&gt;), and then it&amp;rsquo;s off to Tel Aviv, Israel for customer visits and an appearance at the &lt;a href="https://www.meetup.com/JavaIL/events/259118206/"&gt;Israel JUG&lt;/a&gt;. If you&amp;rsquo;re around, then I&amp;rsquo;d love to connect! &lt;/p&gt;
 &lt;p&gt;Anyway, and as always, we&amp;rsquo;ve got tons to cover so let&amp;rsquo;s get to it! &lt;/p&gt;
 &lt;ul&gt;
@@ -122,8 +204,6 @@
   &lt;li&gt;Netifi have put together a collection of YouTube videos related to &lt;a href="https://twitter.com/netifi_inc/status/1100096845924233218?s=12"&gt;RSocket with speakers from Pivotal, Facebook and Netifi &lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;This isn&amp;rsquo;t strictly speaking related to Spring, but it&amp;rsquo;s interesting: SalesForce&amp;rsquo;s &lt;a href="https://twitter.com/ryanmichela/status/1098372725993697280?s=12"&gt;jProtoc 0.9.0 is out! It&amp;rsquo;s a Java protofuf compiler.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;I love watching the cool things that Thomas Darimont gets up to. This time he&amp;rsquo;s put together a nice demo on using &lt;a href="https://github.com/thomasdarimont/spring-boot-security-saml-sample/tree/poc/keycloak-saml-idp#run-with-keycloak"&gt;Spring Security, SAML, Spring Boot and IBM/RedHat/JBoss KeyCloak&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;&lt;a href="https://www.washingtonpost.com/politics/2019/02/22/roger-stone-takes-stand-much-ridiculousness-ensues/"&gt;Roger Stone takes the stand — and much ridiculousness ensues - The Washington Post&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
   &lt;li&gt;This post is &lt;em&gt;nuts&lt;/em&gt;! It&amp;rsquo;s how we got &lt;a href="https://bsideup.github.io/posts/jni-cross-compilation/"&gt;JNI cross-compilation with Docker to work in order to create a Java agent to aid developers using Reactor&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Have you seen &lt;a href="https://github.com/reactor/BlockHound/blob/1.0.0.M1/example/src/test/java/com/example/ReactorTest.java"&gt;BlockHound 1.0.0.M1?&lt;/a&gt; It&amp;rsquo;s a plugin that detects blocked threads in your reactive code.&lt;/li&gt;
   &lt;li&gt;I love this podcast interview with Michael Cote and Paul Czarkowski &lt;a href="https://twitter.com/pivotalcf/status/1098407368273076225?s=12"&gt; on running Spring Boot apps on Kubernetes and more&lt;/a&gt;.&lt;/li&gt;
@@ -900,44 +980,5 @@ public CfJdbcEnv cfJdbcEnv() {&#xD;
     <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce that Spring Framework 5.1.5 &lt;a href="http://projects.spring.io/spring-framework"&gt;is available now&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This maintenance release includes &lt;a href="https://github.com/spring-projects/spring-framework/releases/tag/v5.1.5.RELEASE"&gt;over 40 fixes and improvements&lt;/a&gt;. As usual, we&amp;rsquo;ll follow-up later this week with a maintenance release for Spring Boot 2.1, stay tuned!&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-framework"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/spring-framework-reference"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: Apache Geode</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/13/spring-tips-apache-geode" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-01-17:3543</id>
-    <updated>2019-02-13T00:00:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we look at Gemfire&amp;hellip; err.. Apache Geode, the fantastic distributed data grid you&amp;rsquo;ve probably never heard of, BUT YOU SHOULD, that integrates nicely with the Spring Data for Apache Geode project.&lt;/p&gt;
-&lt;p&gt;speaker: &lt;a href="http://twitter.com/Starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/dmBMs-mubHA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - February 12, 2019</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/12/this-week-in-spring-february-12-2019" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-02-12:3560</id>
-    <updated>2019-02-12T21:57:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;. &lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;ve got good stuff to get to but first, I want to invite you to be part of the discussion and consider submitting to the &lt;em&gt;SpringOne Platform 2019&lt;/em&gt; event. The &lt;a href="https://springoneplatform.io/2019/cfp"&gt;call-for-papers opened today&lt;/a&gt;! &lt;/p&gt;
-&lt;p&gt;Now then, we&amp;rsquo;ve got a ton to get to this week so without further ado..&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;WATCH: Hi Spring fans! In last week&amp;rsquo;s &lt;em&gt;Spring Tips&lt;/em&gt; I looked at &lt;a href="https://spring.io/blog/2019/02/06/spring-tips-testing-reactive-code"&gt;testing reactive code&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;LISTEN: For last week&amp;rsquo;s installment of &lt;em&gt;The Bootiful Podcast&lt;/em&gt; I talked to Dror Weiss about Codota, which aims to bring &lt;em&gt;much&lt;/em&gt; &lt;a href="https://spring.io/blog/2019/02/08/a-bootiful-podcast-dror-weiss"&gt;smarter code completion to your IDE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/02/08/spring-cloud-data-flow-1-7-4-and-skipper-1-1-4-released"&gt;Spring Cloud Data Flow 1.7.4 and Skipper 1.1.4 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/02/06/spring-cloud-data-flow-and-skipper-2-0-m2-released"&gt;Spring Cloud Data Flow and Skipper 2.0 M2 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Notice! The &lt;a href="https://spring.io/blog/2019/02/06/legacy-forums-will-be-shutdown-february-28"&gt;legacy question-and-answer forums will be shutdown February 28&lt;/a&gt;! The good news, of course, is that we&amp;rsquo;re still on &lt;a href="http://spring.io/questions"&gt;StackOverflow&lt;/a&gt; and we&amp;rsquo;d &lt;em&gt;love&lt;/em&gt; to engage with you there!&lt;/li&gt;
-  &lt;li&gt;This is a bit meta, but would you like to learn a little more about what it is I (try) to do, in my capacity as the first Spring Developer Advocate at Pivotal? You might enjoy this episode &lt;a href="http://devrelrad.io/josh-long-on-live-coding-and-more?tdest_id=660362"&gt;of the &lt;em&gt;Devrel Radio&lt;/em&gt; podcast&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I&amp;rsquo;d like to welcome back &lt;a href="https://spring.io/team/sbrannen"&gt;Sam Brannen&lt;/a&gt; to the Spring team. Sam was a member of the Spring team years ago and contributed to, among other things, the Spring Test support. He&amp;rsquo;s also now the lead committer of JUnit 5. &lt;a href="https://twitter.com/springcentral/status/1095243271968825345"&gt;It&amp;rsquo;s so nice to have him back!&lt;/a&gt; Welcome, Sam!&lt;/li&gt;
-  &lt;li&gt;I like this writeup on &lt;a href="https://www.nurkiewicz.com/2019/02/rxjava-vs-reactor.html"&gt;RxJava vs. Reactor&lt;/a&gt;. SPOILER: it depends!&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/springcentral/status/1093896741760495617"&gt;Join us at SpringOne Tour London! We&amp;rsquo;d love to see you there!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I love this example by Robert Roeser &lt;a href="https://github.com/netifi/proteus-spring-kafka-example"&gt;demonstrating RSocket-based RPC, Proteus, and Project Reactor&amp;rsquo;s Kafka client.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I think this is a pretty interesting discussion of &lt;a href="https://www.excelsiorjet.com/blog/articles/aot-compilation-of-spring-boot-behind-the-scenes/"&gt;AOT Compilation of Spring Boot from the Excelsior JET team blog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>
