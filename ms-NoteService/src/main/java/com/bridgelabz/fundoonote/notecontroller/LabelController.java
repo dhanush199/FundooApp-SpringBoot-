@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,17 +54,16 @@ public class LabelController {
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
 
-	@PostMapping("/deletelabel")
-	public ResponseEntity<?> deletelabel(@RequestHeader ("token")String token,HttpServletRequest request) {		
-
-		if(labelService.deleteLabel(token, request))
+	@DeleteMapping("/deletelabel/{token:.+}")
+	public ResponseEntity<?> deletelabel(@PathVariable ("token")String token,@RequestParam String labelName,HttpServletRequest request) {		
+		if(labelService.deleteLabel(token,labelName, request))
 			return new ResponseEntity<>("successfully deleted",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
 
-	@PostMapping("/mapnote&label")
-	public ResponseEntity<?> mapNoteLabel(@RequestHeader ("token")String token,@RequestParam ("noteId")int noteId,@RequestParam ("labelId")int labelId,HttpServletRequest request) {		
+	@PutMapping("/map-note-label/{noteId:.+}/{labelId:.+}")
+	public ResponseEntity<?> mapNoteLabel(@RequestHeader ("token")String token,@PathVariable ("noteId")int noteId,@PathVariable ("labelId")int labelId,HttpServletRequest request) {		
 
 		if(labelService.mapNoteToLabel(token, noteId, labelId))
 			return new ResponseEntity<>("Mapped successfully",HttpStatus.OK);
@@ -72,13 +72,11 @@ public class LabelController {
 	}
 
 	@DeleteMapping("/removenote&label")
-	public ResponseEntity<?> removeNoteLabel(@RequestHeader ("token")String token,@RequestParam ("noteId")int noteId,@RequestParam ("labelId")int labelId,HttpServletRequest request) {		
+	public ResponseEntity<?> removeNoteLabel(@RequestHeader("token")String token,@RequestParam ("noteId")int noteId,@RequestParam ("labelId")int labelId,HttpServletRequest request) {		
 
 		if(labelService.removeNoteLabel(token, noteId, labelId))
 			return new ResponseEntity<>("Labels from particular note has been removed ",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
-
-
 }

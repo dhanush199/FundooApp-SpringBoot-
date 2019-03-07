@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="com.bridgelabz.fundoonote.userdao.UserRepository"/>
     <fullyQualifiedTypeName name="org.springframework.boot.web.context.WebServerApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
@@ -41,7 +40,6 @@
     <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinTable"/>
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.bridgelabz.fundoonote.model.Label"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 </qualifiedTypeNameHistroy>

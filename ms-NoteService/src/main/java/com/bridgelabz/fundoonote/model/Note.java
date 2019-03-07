@@ -144,8 +144,9 @@ public class Note implements Serializable {
 		return labelList;
 	}
 
-	public void setLabelList(List<Label> labelList) {
-		this.labelList = labelList;
+	@SuppressWarnings("unchecked")
+	public void setLabelList(Label labelList) {
+		this.labelList = (List<Label>) labelList;
 	}
 
 	@Override

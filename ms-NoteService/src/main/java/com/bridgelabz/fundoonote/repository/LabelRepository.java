@@ -15,7 +15,11 @@ public interface LabelRepository  extends JpaRepository<Label,Integer> {
 	
 	Label findByUserId(int userId);
 	
+	Label findByLabelName(String labelName);
+	
 	void deleteAllByuserId(int userId);
+	
+	void deleteBylabelName(String labelname);
 
 	Optional<Label> findByLabelId(int labelId);
 	

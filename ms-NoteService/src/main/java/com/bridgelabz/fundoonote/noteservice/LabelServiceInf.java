@@ -14,7 +14,7 @@ public interface LabelServiceInf {
 
 	List<Label> retrieveLabel(String token,HttpServletRequest request);
 
-	boolean deleteLabel(String token, HttpServletRequest request );
+	boolean deleteLabel(String token,String labelname, HttpServletRequest request );
 
 	boolean mapNoteToLabel(String token, int noteId, int labelId);
 	
