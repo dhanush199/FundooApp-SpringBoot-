@@ -67,7 +67,7 @@ public class Note implements Serializable {
 
 	private boolean isArchive=false;
 
-	public boolean isArchive() {
+	public boolean getArchive() {
 		return isArchive;
 	}
 
@@ -99,9 +99,6 @@ public class Note implements Serializable {
 		this.discription = discription;
 	}
 
-	public boolean isPinned() {
-		return isPinned;
-	}
 
 	public void setPinned(boolean isPinned) {
 		this.isPinned = isPinned;
@@ -109,11 +106,6 @@ public class Note implements Serializable {
 
 	public boolean getPinned() {
 		return isPinned;
-	}
-
-	
-	public boolean isInTrash() {
-		return inTrash;
 	}
 
 	public void setInTrash(boolean inTrash) {
@@ -145,8 +137,8 @@ public class Note implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void setLabelList(Label labelList) {
-		this.labelList = (List<Label>) labelList;
+	public void setLabelList(List<Label> labelList) {
+		this.labelList = labelList;
 	}
 
 	@Override

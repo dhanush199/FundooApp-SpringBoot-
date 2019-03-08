@@ -1,7 +1,9 @@
 package com.bridgelabz.fundoonote.noteservice;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -74,39 +76,41 @@ public class LabelServiceImpl implements LabelServiceInf{
 		else
 			return false;
 	}
-	
+
+	List<Label> labelAddList=new LinkedList<Label>();
 	public boolean mapNoteToLabel(String token, int noteId, int labelId) {
-		System.out.println(labelId);
 		System.out.println("noteId"+noteId);
 		int userId = tokenGenerator.authenticateToken(token);
-		Note note = noteService.getNoteByID(noteId);
-		Optional<Label> OptionalLabel = labelRepository.findById(labelId);
-		Label label=OptionalLabel.get();
-		List<Label> labels = labelRepository.findAllByUserId(userId);
-		labels.add(label);
-		if (!labels.isEmpty()) {
-			note.setLabelList(label);
-			noteService.saveNote(note);
-			return true;
+		if(userId>0) {
+			Note note = noteService.getNoteByID(noteId);
+			labelAddList=labelRepository.findAllByUserId(userId);
+			Optional<Label> OptionalLabel = labelRepository.findById(labelId);
+			Label label=OptionalLabel.get();
+			labelAddList.add(label);
+			if (labelAddList!=null) {
+				note.setLabelList(labelAddList);
+				noteService.saveNote(note);
+				labelAddList.clear();
+				return true;
+			}
 		}
 		return false;
 	}
 
 	public boolean removeNoteLabel(String token, int noteId, int labelId) {
-		int id = tokenGenerator.authenticateToken(token);
-		Note residingNote = noteService.getNoteByUserID(id);
-		List<Label> labels = residingNote.getLabelList();
-		if (!labels.isEmpty()) {
-//			labels = labels.stream().filter(label -> label.getId() != labelId)
-//					.collect(Collectors.toList());
-//			residingNote.setLabelList(labels);
-//			labelRepository.deleteAll(labels);
-			return true;
+		int userId = tokenGenerator.authenticateToken(token);
+		if(userId>0) {
+			Note residingNote = noteService.getNoteByID(noteId);
+			System.out.println(residingNote.getDiscription());
+			List<Label> labels = residingNote.getLabelList();
+			if (!labels.isEmpty()) {
+				labels = labels.stream().filter(label -> label.getId() != labelId)
+						.collect(Collectors.toList());
+				residingNote.setLabelList(labels);
+				labelRepository.deleteAll(labels);
+				return true;
+			}
 		}
 		return false;
 	}
-
-
-
-
 }

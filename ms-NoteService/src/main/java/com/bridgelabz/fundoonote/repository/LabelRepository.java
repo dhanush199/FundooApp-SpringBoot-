@@ -21,6 +21,7 @@ public interface LabelRepository  extends JpaRepository<Label,Integer> {
 	
 	void deleteBylabelName(String labelname);
 
-	Optional<Label> findByLabelId(int labelId);
+//	Optional<Label> findByLabelId(int labelId);
+	
 	
 }

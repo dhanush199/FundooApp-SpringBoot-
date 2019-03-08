@@ -20,7 +20,7 @@ public interface NoteServiceInf {
 	
 	public Note saveNote(Note note);
 
-	Note getNoteByUserID(int id);
+//	Note getNoteByUserID(int id);
 
 //	List<Note> deleteNote1(String token,String title,HttpServletRequest request);
 	
