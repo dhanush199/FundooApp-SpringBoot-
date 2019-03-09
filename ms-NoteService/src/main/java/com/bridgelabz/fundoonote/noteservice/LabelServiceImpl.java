@@ -78,6 +78,7 @@ public class LabelServiceImpl implements LabelServiceInf{
 	}
 
 	List<Label> labelAddList=new LinkedList<Label>();
+	
 	public boolean mapNoteToLabel(String token, int noteId, int labelId) {
 		System.out.println("noteId"+noteId);
 		int userId = tokenGenerator.authenticateToken(token);

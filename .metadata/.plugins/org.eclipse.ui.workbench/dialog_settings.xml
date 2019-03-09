@@ -4,7 +4,7 @@
 		<item value="659" key="dialogHeight"/>
 		<item value="783" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 			<item value="1"/>
@@ -23,6 +23,7 @@
 		</list>
 		<list key="textArray">
 			<item value="boo"/>
+			<item value="boot"/>
 			<item value="pro"/>
 			<item value="navi"/>
 			<item value="cons"/>
