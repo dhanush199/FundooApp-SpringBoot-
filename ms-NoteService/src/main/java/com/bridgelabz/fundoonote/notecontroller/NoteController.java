@@ -69,8 +69,9 @@ public class NoteController {
 //		else
 //			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 //	}
-	@DeleteMapping("/delete/{token:.+}")
-	public ResponseEntity<?> delete(@PathVariable ("token") String token,@RequestParam int noteId,HttpServletRequest request,HttpServletResponse response) {
+	
+	@DeleteMapping("/delete/{noteId:.+}")
+	public ResponseEntity<?> delete(@RequestHeader ("token") String token,@PathVariable int noteId,HttpServletRequest request,HttpServletResponse response) {
 	List<Note> notes=noteService.deleteNote(token,noteId,request);
 		if (notes!=null)
 			return new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);

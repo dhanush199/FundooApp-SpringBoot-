@@ -1,13 +1,18 @@
 package com.bridgelabz.fundoonote.userservice;
 
+
+import java.io.IOException;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bridgelabz.fundoonote.userdao.UserRepository;
 import com.bridgelabz.fundoonote.usermodel.User;
@@ -124,9 +129,34 @@ public class UserServiceImpl implements UserServiceInf {
 		}
 
 		public User loadUserByUsername(String username) {
-			System.out.println("hoi");
 			return null;
 
 		}
 
+		@Transactional
+		public User saveImageFile(String token, MultipartFile file) {
+			System.out.println(file);
+			int userId = tokenGenerator.authenticateToken(token);
+			System.out.println(userId+" My user ID");
+
+		    User recipe = userRepository.findUserById(userId);
+		     try {
+		    	 byte[] bytes = file.getBytes();
+		    	 System.out.println("My bytes are "+bytes);
+		    	 System.out.println("My User is "+recipe);
+				    String base64 = new String(Base64.encodeBase64(bytes), "ISO-8859-2");
+
+				recipe.setImage(bytes);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		     recipe= userRepository.save(recipe);
+		     return recipe;
+		}
+		
+		public User getUser(String token){
+			int userId = tokenGenerator.authenticateToken(token);
+			return userRepository.findUserById(userId);
+		}
 	}

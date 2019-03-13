@@ -1,7 +1,11 @@
 package com.bridgelabz.fundoonote.userservice;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bridgelabz.fundoonote.usermodel.User;
 
@@ -15,5 +19,6 @@ public interface UserServiceInf {
 	User resetPassword(String emailID, HttpServletRequest request,User newPassword);
 	void deleteUser(String token);
 	String getTokenByUserId(HttpServletRequest request, User user, HttpServletResponse resp);
-	//User loadUserByUsername(String username);
+	User saveImageFile(String token,MultipartFile image);
+	User getUser(String token);
 }

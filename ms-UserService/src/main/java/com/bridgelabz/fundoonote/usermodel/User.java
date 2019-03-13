@@ -7,7 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
 
 
 
@@ -17,12 +19,11 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 185652L;
 
-	//private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
 
@@ -34,6 +35,21 @@ public class User implements Serializable {
 
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
+	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] bytes) {
+		this.image = bytes;
+	}
+
+	@Lob
+	private byte[] image;
+//	
+//	@Lob
+//	@Column(name = "PROFILE_IMAGE", columnDefinition = "LONGBLOB")
+//	private String profileImage;
 
 	@Column(name = "activation_status")
 	private boolean activationStatus;
@@ -53,8 +69,9 @@ public class User implements Serializable {
 		return id;
 	}
 
-	public void setId(int id) {
+	public User setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getName() {
@@ -89,6 +106,16 @@ public class User implements Serializable {
 		this.mobileNumber = mobileNumber;
 	}
 	
+//	public String getProfileImage() {
+//		return profileImage;
+//	}
+//
+//	public User setProfileImage(String profileImage) {
+//		this.profileImage = profileImage;
+//		return this;
+//	}
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", password=" + password

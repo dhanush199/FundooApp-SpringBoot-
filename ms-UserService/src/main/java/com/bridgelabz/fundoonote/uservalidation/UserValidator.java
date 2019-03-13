@@ -47,6 +47,5 @@ public class UserValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.required");
 		ValidationUtils.rejectIfEmpty(errors, "emailId","emailId.required");
 		ValidationUtils.rejectIfEmpty(errors, "mobileNumber","mobileNumber.required");
-
 	}
 }

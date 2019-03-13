@@ -105,10 +105,10 @@ public class LabelServiceImpl implements LabelServiceInf{
 			System.out.println(residingNote.getDiscription());
 			List<Label> labels = residingNote.getLabelList();
 			if (!labels.isEmpty()) {
-				labels = labels.stream().filter(label -> label.getId() != labelId)
+				labels = labels.stream().filter(label -> label.getId() == labelId)
 						.collect(Collectors.toList());
-				residingNote.setLabelList(labels);
 				labelRepository.deleteAll(labels);
+				residingNote.setLabelList(labels);
 				return true;
 			}
 		}

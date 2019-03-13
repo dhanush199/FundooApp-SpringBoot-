@@ -10,7 +10,7 @@ import com.bridgelabz.fundoonote.usermodel.User;
 @Repository
 public interface UserRepository  extends JpaRepository<User,Integer>{
 //
-//	User findUserById(int id);
+	User findUserById(int id);
 //
 	User findUserByEmailId(String emailId);
 //	void delete(User user) ;

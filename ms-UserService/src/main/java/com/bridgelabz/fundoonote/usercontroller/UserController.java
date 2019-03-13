@@ -1,8 +1,11 @@
 package com.bridgelabz.fundoonote.usercontroller;
 
+import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +25,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bridgelabz.fundoonote.usermodel.User;
 import com.bridgelabz.fundoonote.userservice.UserServiceInf;
@@ -129,6 +134,29 @@ public class UserController {
 		userService.deleteUser(token);
 		return new ResponseEntity<String>("Successfully deleted", HttpStatus.FOUND);
 
+	}
+
+	@PutMapping("/uploadFile/{token:.+}")
+	public ResponseEntity<?> uploadFile(@PathVariable ("token")String token,@RequestParam ("file")
+	MultipartFile uploadData ) {	      
+		if( userService.saveImageFile(token,uploadData)==null)
+			return new ResponseEntity<String>("Successfully uploaded", HttpStatus.OK);
+
+		else
+			return new ResponseEntity<String>("Something went wrong",
+					HttpStatus.NOT_FOUND);
+
+	}
+
+	@GetMapping("/get-user/{token:.+}")
+	public ResponseEntity<?> getUser(@PathVariable ("token")String token, HttpServletRequest request, HttpServletResponse resp) {
+		if(token!=null) {
+			User loggedInUser=userService.getUser(token);
+			if (loggedInUser != null) {
+				return new ResponseEntity<User>(loggedInUser,HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
 	}
 
 }
