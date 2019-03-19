@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -43,6 +44,9 @@ public class Note implements Serializable {
 	@Column(name="isPinned")
 	private boolean isPinned;
 
+	@Column(name="colore")
+	private String colore;
+
 	@Column(name="inTrash")
 	private boolean inTrash=false;
 
@@ -53,6 +57,27 @@ public class Note implements Serializable {
 	@Column(name="createdTime")
 	@CreationTimestamp
 	private Timestamp createdTime;
+
+
+
+	@OneToMany(mappedBy = "noteId", cascade = CascadeType.ALL)
+	private List<Collaborator> collaborators;
+	public List<Collaborator> getCollaborators() {
+		return collaborators;
+	}
+
+	public void setCollaborators(List<Collaborator> collaborator) {
+		this.collaborators = collaborator;
+	}
+
+
+	public String getColore() {
+		return colore;
+	}
+
+	public void setColore(String colore) {
+		this.colore = colore;
+	}
 
 	private int userId;
 
@@ -111,7 +136,7 @@ public class Note implements Serializable {
 	public void setInTrash(boolean inTrash) {
 		this.inTrash = inTrash;
 	}
-	
+
 	public boolean getInTrash() {
 		return inTrash;
 	}
@@ -143,9 +168,11 @@ public class Note implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", title=" + title + ", discription=" + discription + ", inTrash=" + inTrash
-				+ ", isPinned=" + isPinned + ", updateTime="+updateTime +",createdTime=" +createdTime +"]";
+		return "Note [labelList=" + labelList + ", id=" + id + ", title=" + title + ", discription=" + discription
+				+ ", isPinned=" + isPinned + ", colore=" + colore + ", inTrash=" + inTrash + ", updateTime="
+				+ updateTime + ", createdTime=" + createdTime + ", userId=" + userId + ", isArchive=" + isArchive + "]";
 	}
+
 
 }
 

@@ -1,11 +1,10 @@
 package com.bridgelabz.fundoonote.usercontroller;
 
-import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -159,4 +158,22 @@ public class UserController {
 		return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
 	}
 
+	@PostMapping("/add-collaborator/{token:.+}")
+	public ResponseEntity<?> addCollaborator(@PathVariable ("token")String token,@RequestBody User user,@RequestParam("noteId") int noteId, HttpServletRequest request) {
+		if (userService.addCollaborator(user,noteId,token ) != null)
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		else
+			return new ResponseEntity<String>(
+					"not ok",
+					HttpStatus.CONFLICT);
+	}
+
+	@GetMapping("/get-all-user/{token:.+}")
+	public ResponseEntity<?> getAllUser(@PathVariable ("token")String token, HttpServletRequest request, HttpServletResponse resp) {
+		List<String> emailIds=userService.getAllUser(token);
+		if(emailIds!=null)
+		return new ResponseEntity<List<String>>(emailIds,HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
+	}
 }

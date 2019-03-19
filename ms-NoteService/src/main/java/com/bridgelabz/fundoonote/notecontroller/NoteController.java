@@ -56,19 +56,13 @@ public class NoteController {
 	@GetMapping("/retrievenote")
 	public ResponseEntity<?> retrieveNote(@RequestHeader ("token") String token,HttpServletRequest request,HttpServletResponse response) {
 		List<Note> notes=noteService.retrieveNote(token, request);
-		if (notes!=null)
+		if (notes!=null) {
+			System.out.println(notes);
 			return new ResponseEntity<List<Note>>(notes,HttpStatus.OK);
+		}
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
-//	
-//	@PutMapping("/editnote/{token:.+}")
-//	public ResponseEntity<?> editNotes(@RequestParam("noteId") int noteId,@RequestParam ("token")String token,@RequestBody Note note, HttpServletRequest request,HttpServletResponse response) {
-//		if (noteService.editNote(token,note,noteId, request)!=null)
-//			return new ResponseEntity<String>("Note Succesfully updated",HttpStatus.OK);
-//		else
-//			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
-//	}
 	
 	@DeleteMapping("/delete/{noteId:.+}")
 	public ResponseEntity<?> delete(@RequestHeader ("token") String token,@PathVariable int noteId,HttpServletRequest request,HttpServletResponse response) {

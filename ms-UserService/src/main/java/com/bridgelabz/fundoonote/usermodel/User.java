@@ -2,16 +2,19 @@ package com.bridgelabz.fundoonote.usermodel;
 
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-
-
 
 @Entity
 @Table(name = "User")
@@ -29,12 +32,30 @@ public class User implements Serializable {
 
 	@Column(name = "emailId", unique = true)
 	private String emailId;
+	
+	public String getCoEmailId() {
+		return coEmailId;
+	}
+
+	public void setCoEmailId(String coEmailId) {
+		this.coEmailId = coEmailId;
+	}
+
+	
+
+	@Column(name = "coEmailId")
+	private String coEmailId;
 
 	@Column(name = "password", length = 60)
 	private String password;
 
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
+	
+	@Lob
+	private byte[] image;
+	
+
 	
 	public byte[] getImage() {
 		return image;
@@ -43,13 +64,6 @@ public class User implements Serializable {
 	public void setImage(byte[] bytes) {
 		this.image = bytes;
 	}
-
-	@Lob
-	private byte[] image;
-//	
-//	@Lob
-//	@Column(name = "PROFILE_IMAGE", columnDefinition = "LONGBLOB")
-//	private String profileImage;
 
 	@Column(name = "activation_status")
 	private boolean activationStatus;
@@ -105,16 +119,6 @@ public class User implements Serializable {
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	
-//	public String getProfileImage() {
-//		return profileImage;
-//	}
-//
-//	public User setProfileImage(String profileImage) {
-//		this.profileImage = profileImage;
-//		return this;
-//	}
-
 
 	@Override
 	public String toString() {

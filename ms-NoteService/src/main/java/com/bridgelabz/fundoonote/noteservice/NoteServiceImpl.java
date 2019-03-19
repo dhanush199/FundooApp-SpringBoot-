@@ -3,7 +3,6 @@ package com.bridgelabz.fundoonote.noteservice;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,20 +30,10 @@ public class NoteServiceImpl implements NoteServiceInf {
 
 	@Override
 	public Note editNote(String token, Note note,int noteId,HttpServletRequest request) {
-		int userId=tokenGenerator.authenticateToken(token);
+//		int userId=tokenGenerator.authenticateToken(token);
 		Note existingNote=noteRepository.getOne(noteId);
 		if(existingNote!=null) {
 			note.setId(existingNote.getId());
-			
-//		existingNote.setUserId(userId);
-//			if(note.getTitle()!=null) 
-//				existingNote.setTitle(note.getTitle());	
-//			if(note.getDiscription()!=null) 
-//				existingNote.setDiscription(note.getDiscription());
-//			if(note.getInTrash()==true) 
-//				existingNote.setInTrash(true);
-//			else
-//				existingNote.setInTrash(false);
 			Note updatedNote=noteRepository.save(note);
 			return updatedNote;
 

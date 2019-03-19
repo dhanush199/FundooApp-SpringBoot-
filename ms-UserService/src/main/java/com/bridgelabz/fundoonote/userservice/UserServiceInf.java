@@ -2,6 +2,8 @@ package com.bridgelabz.fundoonote.userservice;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,4 +23,6 @@ public interface UserServiceInf {
 	String getTokenByUserId(HttpServletRequest request, User user, HttpServletResponse resp);
 	User saveImageFile(String token,MultipartFile image);
 	User getUser(String token);
+	User addCollaborator(User user,int NoteId,String token);
+	List<String> getAllUser(String token);
 }

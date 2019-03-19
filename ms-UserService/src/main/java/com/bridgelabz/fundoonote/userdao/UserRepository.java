@@ -1,19 +1,23 @@
 package com.bridgelabz.fundoonote.userdao;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import com.bridgelabz.fundoonote.usermodel.User;
 
 
 @Repository
 public interface UserRepository  extends JpaRepository<User,Integer>{
-//
-	User findUserById(int id);
-//
+
+	Optional<User> findUserById(int id);
 	User findUserByEmailId(String emailId);
-//	void delete(User user) ;
-//	 void deleteById(Integer id);
-//		
+	
+    @Query("SELECT emailId FROM User p WHERE p.emailId!=null")
+
+    public List<String> find();
+	
 }

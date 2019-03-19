@@ -1,8 +1,10 @@
 package com.bridgelabz.fundoonote.noteservice;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,6 +81,7 @@ public class LabelServiceImpl implements LabelServiceInf{
 
 	List<Label> labelAddList=new LinkedList<Label>();
 	
+	
 	public boolean mapNoteToLabel(String token, int noteId, int labelId) {
 		System.out.println("noteId"+noteId);
 		int userId = tokenGenerator.authenticateToken(token);
@@ -98,11 +101,12 @@ public class LabelServiceImpl implements LabelServiceInf{
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
 	public boolean removeNoteLabel(String token, int noteId, int labelId) {
 		int userId = tokenGenerator.authenticateToken(token);
 		if(userId>0) {
 			Note residingNote = noteService.getNoteByID(noteId);
-			System.out.println(residingNote.getDiscription());
 			List<Label> labels = residingNote.getLabelList();
 			if (!labels.isEmpty()) {
 				labels = labels.stream().filter(label -> label.getId() == labelId)
