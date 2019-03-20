@@ -140,7 +140,6 @@ public class UserServiceImpl implements UserServiceInf {
 			byte[] bytes = file.getBytes();
 			recipe.setImage(bytes);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		recipe= userRepository.save(recipe);
@@ -152,26 +151,28 @@ public class UserServiceImpl implements UserServiceInf {
 		return userRepository.findUserById(userId).get();
 	}
 
+	public User getCoUserEmailId(int coUserId){
+		return userRepository.findById(coUserId).get();
+	}
+	
 	@Override
 	public User addCollaborator(User user,int NoteId, String token) {
 		int userId = tokenGenerator.authenticateToken(token);
 		Optional<User> existingUser = userRepository.findUserById(userId);
 		User mayBeUser=existingUser.get();
 		user.setId(mayBeUser.getId());
-		//		user.set
-		//		user= userRepository.save(user);
 		return user;
 	}
 
 	@Override
 	public List<String> getAllUser( String token) {
-		int userId = tokenGenerator.authenticateToken(token);
-		Optional<User> existingUser = userRepository.findUserById(userId);
-//		if(existingUser.isPresent()) 
+		tokenGenerator.authenticateToken(token);
 		List<String> emailIds=userRepository.find();
-		System.out.println(emailIds);
-//			else
-				return emailIds;
-
-		}
+		return emailIds;
 	}
+
+	@Override
+	public User getUserByEmail(String emailId) {
+		return userRepository.findUserByEmailId(emailId);
+	}
+}

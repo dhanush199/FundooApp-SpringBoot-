@@ -1,10 +1,7 @@
 package com.bridgelabz.fundoonote.noteservice;
 
 
-import java.util.List;
-
 import com.bridgelabz.fundoonote.model.Collaborator;
-import com.bridgelabz.fundoonote.model.Note;
 
 public interface CollaboratorServiceInf {
 
@@ -12,5 +9,4 @@ public interface CollaboratorServiceInf {
 	
 	boolean removeCollaborator(String token,Collaborator colUser);
 	
-	List<Note> getCollaboratedNote(String token);
 }

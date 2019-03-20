@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -176,4 +177,25 @@ public class UserController {
 		else
 			return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
 	}
+
+	@GetMapping("/get-coll-user/{emaiId:.+}")
+	public ResponseEntity<?> getCollabUser(@PathVariable ("emaiId")String emaiId,@RequestHeader ("token")String token,HttpServletRequest request, HttpServletResponse resp) {
+		User coUser=userService.getUserByEmail(emaiId);
+		if(coUser!=null)
+		return new ResponseEntity<User>(coUser,HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
+	}
+	
+	@GetMapping("/get-user-email/{token:.+}")
+	public ResponseEntity<?> getCoUser(@PathVariable ("token")String token,@RequestParam("coUserId")int coUserId, HttpServletRequest request, HttpServletResponse resp) {
+		if(token!=null) {
+			User loggedInUser=userService.getCoUserEmailId(coUserId);
+			if (loggedInUser != null) {
+				return new ResponseEntity<User>(loggedInUser,HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
+	}
+	
 }

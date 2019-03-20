@@ -14,10 +14,10 @@ import com.bridgelabz.fundoonote.usermodel.User;
 public interface UserRepository  extends JpaRepository<User,Integer>{
 
 	Optional<User> findUserById(int id);
+	
 	User findUserByEmailId(String emailId);
 	
     @Query("SELECT emailId FROM User p WHERE p.emailId!=null")
-
     public List<String> find();
 	
 }

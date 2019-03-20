@@ -1,5 +1,6 @@
 package com.bridgelabz.fundoonote.noteservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bridgelabz.fundoonote.model.Collaborator;
 import com.bridgelabz.fundoonote.model.Note;
+import com.bridgelabz.fundoonote.repository.CollaboratorRepo;
 import com.bridgelabz.fundoonote.repository.NoteRepository;
 import com.bridgelabz.fundoonote.noteutil.TokenGeneratorInf;
 
@@ -16,6 +19,9 @@ public class NoteServiceImpl implements NoteServiceInf {
 
 	@Autowired
 	private NoteRepository noteRepository;
+	
+	@Autowired
+	private CollaboratorRepo collaboratorRepo;
 
 	@Autowired
 	private TokenGeneratorInf tokenGenerator;
@@ -55,11 +61,20 @@ public class NoteServiceImpl implements NoteServiceInf {
 	@Override
 	public List<Note> retrieveNote(String token,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
-		List<Note> Notes = noteRepository.findAllNoteByUserId(userId);
-		if (!Notes.isEmpty()) {
-			return Notes;
+		System.out.println("My user Id "+userId);
+		List<Note> notes=new ArrayList<Note>();
+		List<Collaborator> collaborators=collaboratorRepo.findAllByOwnerId(userId);
+		System.out.println("collaborators notes "+collaborators);
+		for(Collaborator collaborator:collaborators)
+		{
+			notes.add(noteRepository.findById(collaborator.getNoteId()).get());
+			System.out.println("noteTable"+notes);
 		}
-		return null;
+		List<Note> newNotes = noteRepository.findAllNoteByUserId(userId);
+		System.out.println(newNotes);
+		notes.addAll(newNotes);
+		System.out.println(notes);
+		return notes;
 	}
 
 	public Note getNoteByID(int userId){
@@ -70,10 +85,5 @@ public class NoteServiceImpl implements NoteServiceInf {
 		return noteRepository.save(note);
 
 	}
-
-//	public Note getNoteByUserID(int userId){
-//		return (Note) noteRepository.findNoteByUserId(userId);
-//	}
-
 
 }

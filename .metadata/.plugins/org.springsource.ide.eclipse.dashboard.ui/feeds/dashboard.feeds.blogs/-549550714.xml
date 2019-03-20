@@ -5,7 +5,34 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-03-18T16:12:02Z</updated>
+  <updated>2019-03-19T11:57:01Z</updated>
+  <entry>
+    <title>This Week in Spring - March 19th, 2019</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/03/19/this-week-in-spring-march-19th-2019" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-03-19:3607</id>
+    <updated>2019-03-19T11:57:01Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! What a wild and wonderful week of Spring it&amp;rsquo;s been! This week I&amp;rsquo;m in London, UK for the epic SpringOne Tour event and customer visits, then I&amp;rsquo;m off to Vienna, Austria and then I&amp;rsquo;m off to Amsterdam, NL for the SpringOne Tour event there. If you&amp;rsquo;re in any of these &lt;a href="http://twitter.com/Starbuxman"&gt;places please say hi!&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/03/18/spring-cloud-data-flow-2-0-1-ga-released"&gt;Spring Cloud Data Flow 2.0.1 GA Released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/03/15/a-bootiful-podcast-spring-security-engineer-and-oauth-slayer-joe-grandja"&gt;A Bootiful Podcast: Spring Security engineer and OAuth slayer Joe Grandja&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Hi Spring fans! I did a special season mid-interregnum video on Spring Tips: &lt;a href="https://spring.io/blog/2019/03/14/spring-tips-be-lazy-and-fast-with-spring-boot-2-2-m1"&gt;&lt;em&gt;Be Lazy AND Fast with Spring Boot 2.2.M1!&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/03/14/lazy-initialization-in-spring-boot-2-2"&gt;Lazy Initialization in Spring Boot 2.2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Integrating Spring Cloud with Kubernetes is really simple! In this video, Paul Czarkowski is &lt;a href="https://www.youtube.com/watch?v=jR35JKq5rmc"&gt;showing how your Spring Boot app can leverage Kubernetes features (such as ConfigMap) without having to change your source code!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/spring_io/status/1107666963592110081"&gt;Have you secured your tickets for the Spring I/O conference in bootiful Barcelona, Spain?&lt;/a&gt; I&amp;rsquo;ll be there, co-presenting four different talks with my friends in the ecosystem. Join us!&lt;/li&gt;
+  &lt;li&gt;the Java Code Geeks have a nice post on using the &lt;a href="https://examples.javacodegeeks.com/enterprise-java/spring/boot/spring-boot-crossorigin-annotation-example/"&gt;Spring Boot &lt;code&gt;@CrossOrigin&lt;/code&gt; annotation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcloud/status/1106776301090807808"&gt;Have you signed up for SpringOne Platform 2019&lt;/a&gt;? Get your tickets now!&lt;/li&gt;
+  &lt;li&gt;Great tweet from Spring Data lead Oliver Drotbohm &lt;a href="https://twitter.com/odrotbohm/status/1106645111402913794?s=20"&gt;on Twitter: &amp;quot;&amp;hellip;when comparing the different frameworks&amp;hellip;, more of those participants who implemented some security achieved a high score for security through Spring’s default implementation.“&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Nice! &lt;a href="https://twitter.com/sdeleuze/status/1106610144744562688?s=12"&gt;Kotlin coroutine support in Spring WebFlux&lt;/a&gt; is coming!&lt;/li&gt;
+  &lt;li&gt;Good news everybody! In February &lt;a href="https://twitter.com/SpringData/status/1106550030410883072"&gt;Spring Data crossed 2.5 million downloads for the first time!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Check out the slides from Olga Maciaszek-Sharma and Marcin Grzejszczak on using &lt;a href="https://twitter.com/springcloud/status/1106522322113101825"&gt;Spring in a post Spring Cloud Netflix world&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Congrats Spring Security team member Joe Grandja &lt;a href="https://twitter.com/springcentral/status/1106210126627856390"&gt;on just passing your 3 year work-anniversary on the Spring team!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I love this post from Spring Cloud Stream teammember &lt;a href="https://www.confluent.io/blog/spring-for-apache-kafka-deep-dive-part-2-apache-kafka-spring-cloud-stream"&gt;Soby Chacko on using Spring Cloud Stream and Kafka&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Data Flow 2.0.1 GA Released</title>
     <link rel="alternate" href="https://spring.io/blog/2019/03/18/spring-cloud-data-flow-2-0-1-ga-released" />
@@ -1449,36 +1476,6 @@ public FilterRegistrationBean&amp;lt;ForwardedHeaderFilter&amp;gt; forwardedHead
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;Thanks to &lt;a href="https://spring.io/team/scottfrederick"&gt;Scott Frederick&lt;/a&gt; and &lt;a href="https://spring.io/team/dturanski"&gt;David Turanski&lt;/a&gt; for their contributions!&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Vault 2.1.2.RELEASE available</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/27/spring-vault-2-1-2-release-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Paluch</name>
-    </author>
-    <id>tag:spring.io,2019-02-27:3587</id>
-    <updated>2019-02-27T15:44:57Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;d like to announce the availability of the Spring Vault service release 2.1.2 available from Maven Central.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This release ships with bug fixes and dependency version updates. Spring Vault 2.1.2 is going to be picked up by Spring Cloud Vault 2.1.2 with the Spring Cloud Greenwich SR1 release in the next days.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes see the &lt;a href="http://docs.spring.io/spring-vault/docs/2.1.2.RELEASE/changelog.txt"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="end-of-life-for-1-1-x-and-2-0-x-lines"&gt;&lt;a class="anchor" href="#end-of-life-for-1-1-x-and-2-0-x-lines"&gt;&lt;/a&gt;End of Life for 1.1.x and 2.0.x Lines&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;With this release cycle, we have stopped backporting changes to the earlier Spring Vault 2.0.x line. The 2.0.x line has already reached its end of life. For the 1.1.x line, we&amp;#8217;re going to backport fixes until Aug 1st, 2019, in alignment with &lt;a href="https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019"&gt;Spring Boot 1.5.x&lt;/a&gt; and &lt;a href="https://spring.io/blog/2018/07/30/spring-cloud-edgware-eol-aug-1st-2019"&gt;Spring Cloud Edgware&lt;/a&gt; EOL dates.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-vault/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/2.1.2.RELEASE/reference/html/"&gt;Documentation for 2.1.2.RELEASE&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-vault"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;</content>
   </entry>
 </feed>
