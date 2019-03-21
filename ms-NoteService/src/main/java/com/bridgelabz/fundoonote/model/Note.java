@@ -58,8 +58,6 @@ public class Note implements Serializable {
 	@CreationTimestamp
 	private Timestamp createdTime;
 
-
-
 	@OneToMany(mappedBy = "noteId", cascade = CascadeType.ALL)
 	private List<Collaborator> collaborators;
 	public List<Collaborator> getCollaborators() {

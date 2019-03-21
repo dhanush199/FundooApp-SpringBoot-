@@ -5,7 +5,38 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-03-19T11:57:01Z</updated>
+  <updated>2019-03-20T16:07:13Z</updated>
+  <entry>
+    <title>Announcing General Availability of Spring Cloud Function - 2.1.0.M1</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/03/20/announcing-general-availability-of-spring-cloud-function-2-1-0-m1" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Oleg Zhurakousky</name>
+    </author>
+    <id>tag:spring.io,2019-03-20:3608</id>
+    <updated>2019-03-20T16:07:13Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce first milestone of the Spring Cloud Function - 2.1.0.M1.&lt;/p&gt;
+&lt;p&gt;Individual modules of Spring Cloud Function 2.1.0.M1 are available for use in the &lt;a href="https://repo.spring.io/libs-snapshot/org/springframework/cloud/"&gt;Spring Milestone&lt;/a&gt; repository.&lt;br/&gt;This release encompasses the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Some of the features that has always been available in &lt;em&gt;bean factory based&lt;/em&gt; function catalog are now part of the &lt;strong&gt;&lt;em&gt;functional form&lt;/em&gt;&lt;/strong&gt; (see &lt;a href="https://spring.io/blog/2018/10/22/functional-bean-registrations-in-spring-cloud-function"&gt;Dave Syer&amp;rsquo;s blog&lt;/a&gt; for more details on &lt;em&gt;functional form&lt;/em&gt;) :
+    &lt;ul&gt;
+      &lt;li&gt;&lt;em&gt;Multiple endpoint support&lt;/em&gt; - ability to map multiple HTTP endpoints the same way one would expect in conventional context configuration.&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Function composition&lt;/em&gt; - ability to compose function (e.g., &lt;code&gt;foo|bar&lt;/code&gt; or &lt;code&gt;foo,bar&lt;/code&gt;).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ability to communicate and retain meta-information via Message headers for cases where Message function is composed with non-Message (e.g., &lt;code&gt;Function&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt;, Message&amp;lt;?&amp;gt;&amp;gt;&lt;/code&gt; is composed with &lt;code&gt;Function&amp;lt;?, ?&amp;gt;&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;Support for implicit function composition where &lt;code&gt;catalog.lookup(&amp;quot;&amp;quot;)&lt;/code&gt;, &lt;code&gt;catalog.lookup(&amp;quot;|&amp;quot;)&lt;/code&gt;, &lt;code&gt;catalog.lookup(&amp;quot;foo|&amp;quot;)&lt;/code&gt; or &lt;code&gt;catalog.lookup(&amp;quot;|bar&amp;quot;)&lt;/code&gt; are all valid lookups providing container with enough information to determine your intentions. For example, &lt;em&gt;empty string&lt;/em&gt; simply implies there is only one Function in catalog and no explicit name should be provided.&lt;/li&gt;
+  &lt;li&gt;Creating Supplier from remote HTTP endpoint where one can define the &lt;em&gt;sink url&lt;/em&gt; (destination) and the &lt;em&gt;source url&lt;/em&gt; (source) and use the app as a pipeline for events from/to HTTP.&lt;/li&gt;
+  &lt;li&gt;AWS &lt;a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-function/2.1.0.M1/aws.html#_custom_runtime"&gt;Custom Runtime&lt;/a&gt; feature.&lt;/li&gt;
+  &lt;li&gt;Other minor &lt;a href="https://github.com/spring-cloud/spring-cloud-function/milestone/16?closed=1"&gt;enhancements and bug-fixes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, there was a major update to both the &lt;a href="https://spring.io/projects/spring-cloud-function"&gt;project&amp;rsquo;s home page&lt;/a&gt; as well as &lt;a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-function/2.1.0.M1/home.html"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Spring Cloud Function 2.1.x is dependent on spring-boot 2.1.x.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-cloud/spring-cloud-function/labels/ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-cloud-function"&gt;&lt;code&gt;spring-cloud-function&lt;/code&gt; tag&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.spring.io/spring-cloud-function/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-cloud/spring-cloud-function"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-cloud/spring-cloud-function/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://cloud.spring.io/spring-cloud-static/spring-cloud-function/2.0.0.RELEASE/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - March 19th, 2019</title>
     <link rel="alternate" href="https://spring.io/blog/2019/03/19/this-week-in-spring-march-19th-2019" />
@@ -1433,49 +1464,5 @@ public FilterRegistrationBean&amp;lt;ForwardedHeaderFilter&amp;gt; forwardedHead
     <content type="html">&lt;p&gt;Hi Spring fans! This week I&amp;rsquo;m excited to sit down and talk with mr. Reactive himself, Reactor project lead Stéphane Maldini. In this interview we talk about the history of the reactive programming for Spring, the Reactor project&amp;rsquo;s evolution over time, from then to now and looking forward.&lt;/p&gt;
 &lt;p&gt;the &lt;a href="http://ProjectReactor.io"&gt;Project Reactor website&lt;/a&gt;&lt;br/&gt;&lt;a href="@smaldini"&gt;Stéphane on Twitter&lt;/a&gt;&lt;/p&gt;
 &lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/582654270&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>java-cfenv 1.0 RC1 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/27/java-cfenv-1-0-rc1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2019-02-27:3588</id>
-    <updated>2019-02-27T22:42:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;The java-cfenv library is new library for accessing Cloud Foundry Services.  For Spring Boot users, it extracts service credentials from the &lt;code&gt;VCAP_SERVICES&lt;/code&gt; environment variable and sets well known Spring Boot auto-configuration properties.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this release the following Cloud Foundry Services are supported&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Databases - DB2, MySQL, Oracle, Postgresql, SqlServer&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;RabbitMQ&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Cassandara&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MongoDB&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Redis&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In 1.0 RC1 two other modules were introduced that contain support for Pivotal’s Spring Cloud Service and Single Sign on tiles. The &lt;code&gt;java-cfenv-boot-pivotal-scs&lt;/code&gt; module provides support for Config Server and &lt;code&gt;java-cfenv-boot-pivotal-sso&lt;/code&gt; module provides support for single sign on.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;There is a new interface, &lt;a href="https://github.com/pivotal-cf/java-cfenv/blob/master/java-cfenv-boot/src/main/java/io/pivotal/cfenv/spring/boot/CfEnvProcessor.java"&gt;CfEnvProcessor&lt;/a&gt; that simplifies what you need to write in order to provide integration with other Cloud Foundry services.  The docs on &lt;a href="https://github.com/pivotal-cf/java-cfenv#supporting-other-services"&gt;supporting other services&lt;/a&gt; has the details.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Thanks to &lt;a href="https://spring.io/team/scottfrederick"&gt;Scott Frederick&lt;/a&gt; and &lt;a href="https://spring.io/team/dturanski"&gt;David Turanski&lt;/a&gt; for their contributions!&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>
