@@ -57,6 +57,10 @@ public class Note implements Serializable {
 	@Column(name="createdTime")
 	@CreationTimestamp
 	private Timestamp createdTime;
+	
+	@Column(name="reminder")
+	//@CreationTimestamp
+	private Timestamp reminder;
 
 	@OneToMany(mappedBy = "noteId", cascade = CascadeType.ALL)
 	private List<Collaborator> collaborators;
@@ -118,6 +122,14 @@ public class Note implements Serializable {
 		return discription;
 	}
 
+	public Timestamp getReminder() {
+		return reminder;
+	}
+
+	public void setReminder(Timestamp reminder) {
+		this.reminder = reminder;
+	}
+
 	public void setDiscription(String discription) {
 		this.discription = discription;
 	}
@@ -167,7 +179,8 @@ public class Note implements Serializable {
 	public String toString() {
 		return "Note [labelList=" + labelList + ", id=" + id + ", title=" + title + ", discription=" + discription
 				+ ", isPinned=" + isPinned + ", colore=" + colore + ", inTrash=" + inTrash + ", updateTime="
-				+ updateTime + ", createdTime=" + createdTime + ", userId=" + userId + ", isArchive=" + isArchive + "]";
+				+ updateTime + ", createdTime=" + createdTime + ", reminder=" + reminder + ", collaborators="
+				+ collaborators + ", userId=" + userId + ", isArchive=" + isArchive + "]";
 	}
 
 

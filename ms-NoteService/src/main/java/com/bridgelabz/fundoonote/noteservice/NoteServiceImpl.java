@@ -36,7 +36,6 @@ public class NoteServiceImpl implements NoteServiceInf {
 
 	@Override
 	public Note editNote(String token, Note note,int noteId,HttpServletRequest request) {
-//		int userId=tokenGenerator.authenticateToken(token);
 		Note existingNote=noteRepository.getOne(noteId);
 		if(existingNote!=null) {
 			note.setId(existingNote.getId());
@@ -75,15 +74,6 @@ public class NoteServiceImpl implements NoteServiceInf {
 		notes.addAll(newNotes);
 		System.out.println(notes);
 		return notes;
-	}
-
-	public Note getNoteByID(int userId){
-		return noteRepository.findNoteById(userId);
-	}
-
-	public Note saveNote(Note note) {
-		return noteRepository.save(note);
-
 	}
 
 }

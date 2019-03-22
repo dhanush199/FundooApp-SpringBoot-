@@ -66,9 +66,9 @@ public class LabelController {
 	public ResponseEntity<?> mapNoteLabel(@RequestHeader ("token")String token,@PathVariable ("noteId")int noteId,@PathVariable ("labelId")int labelId,HttpServletRequest request) {		
 
 		if(labelService.mapNoteToLabel(token, noteId, labelId))
-			return new ResponseEntity<>("Mapped successfully",HttpStatus.OK);
+			return new ResponseEntity<String>("Mapped successfully",HttpStatus.OK);
 		else
-			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 	}
 
 	@DeleteMapping("/removenote&label/{noteId:.+}/{labelId:.+}")

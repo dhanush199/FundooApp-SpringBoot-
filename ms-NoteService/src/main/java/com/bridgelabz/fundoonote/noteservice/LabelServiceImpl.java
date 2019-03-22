@@ -1,8 +1,6 @@
 package com.bridgelabz.fundoonote.noteservice;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +13,7 @@ import com.bridgelabz.fundoonote.model.Label;
 import com.bridgelabz.fundoonote.model.Note;
 import com.bridgelabz.fundoonote.noteutil.TokenGeneratorInf;
 import com.bridgelabz.fundoonote.repository.LabelRepository;
+import com.bridgelabz.fundoonote.repository.NoteRepository;
 
 @Service
 public class LabelServiceImpl implements LabelServiceInf{
@@ -26,7 +25,7 @@ public class LabelServiceImpl implements LabelServiceInf{
 	private TokenGeneratorInf tokenGenerator;
 
 	@Autowired
-	private NoteServiceInf noteService;
+	private NoteRepository noteRepository;
 
 	public Label createLabel(String token,Label label, HttpServletRequest request){
 		int userId=tokenGenerator.authenticateToken(token);
@@ -77,41 +76,43 @@ public class LabelServiceImpl implements LabelServiceInf{
 			return false;
 	}
 
-	List<Label> labelAddList=new LinkedList<Label>();
-	
 	public boolean mapNoteToLabel(String token, int noteId, int labelId) {
-		System.out.println("noteId"+noteId);
-		int userId = tokenGenerator.authenticateToken(token);
-		if(userId>0) {
-			Note note = noteService.getNoteByID(noteId);
-			labelAddList=labelRepository.findAllByUserId(userId);
-			Optional<Label> OptionalLabel = labelRepository.findById(labelId);
-			Label label=OptionalLabel.get();
+		System.out.println("labelId"+labelId+" noteId "+noteId);
+		Note note = noteRepository.findById(noteId).get();
+		Label label = labelRepository.findById(labelId).get();
+		if(!note.getLabelList().contains(label)) {
+			List<Label> labelAddList=note.getLabelList();
 			labelAddList.add(label);
-			if (labelAddList!=null) {
-				note.setLabelList(labelAddList);
-				noteService.saveNote(note);
-				labelAddList.clear();
-				return true;
-			}
-		}
+			note.setLabelList(labelAddList);
+			noteRepository.save(note);
+			return true;
+		}				
 		return false;
 	}
 
 	@Transactional
 	public boolean removeNoteLabel(String token, int noteId, int labelId) {
-		int userId = tokenGenerator.authenticateToken(token);
-		if(userId>0) {
-			Note residingNote = noteService.getNoteByID(noteId);
-			List<Label> labels = residingNote.getLabelList();
-			if (!labels.isEmpty()) {
-				labels = labels.stream().filter(label -> label.getId() == labelId)
-						.collect(Collectors.toList());
-				labelRepository.deleteAll(labels);
-				residingNote.setLabelList(labels);
-				return true;
-			}
+		Note residingNote = noteRepository.findById(noteId).get();
+		List<Label> labels = residingNote.getLabelList();
+		System.out.println("this is my label list "+labels);
+		Label label = labelRepository.findById(labelId).get();
+		System.out.println("this is my label "+labels);
+
+		if(labels.remove(label)) {
+			residingNote.setLabelList(labels);
+			System.out.println("this is my Note "+residingNote);
+			//			System.out.println((labels));
+			//			if (!labels.isEmpty()) {
+			//				labels = labels.stream().filter(label -> label.getId() == labelId)
+			//						.collect(Collectors.toList());
+			//				residingNote.setLabelList(labels);
+			//				System.out.println("this is my label list "+labels);
+			noteRepository.save(residingNote);
+			return true;
+			//}
 		}
 		return false;
+
 	}
 }
+

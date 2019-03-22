@@ -16,8 +16,5 @@ public interface NoteServiceInf {
 	
 	List<Note> retrieveNote(String token,HttpServletRequest request);
 
-	Note getNoteByID(int id);
-	
-	public Note saveNote(Note note);
 	
 }
