@@ -32,7 +32,6 @@ public class CollaboratorServiceImpl implements CollaboratorServiceInf{
 	@Transactional
 	public boolean removeCollaborator(String token, Collaborator colaborater) {
 		tokenGenerator.authenticateToken(token);
-		System.out.println(colaborater);
 		try {
 		collaboratorRepo.deleteById(colaborater.getId());
 		}catch (Exception e) {

@@ -1,7 +1,6 @@
 package com.bridgelabz.fundoonote.noteservice;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -47,8 +46,8 @@ public class LabelServiceImpl implements LabelServiceInf{
 					.filter(userLabel -> label.getId()==(userLabel.getId()))
 					.findAny()
 					.orElse(null);
-			System.out.println(existingLabel);
 			existingLabel.setLabelName(label.getLabelName());
+			assert(existingLabel!=null);
 			return labelRepository.save(existingLabel);
 		}
 		else
@@ -65,7 +64,6 @@ public class LabelServiceImpl implements LabelServiceInf{
 	}
 	@Transactional
 	public boolean deleteLabel(String token,String labelName, HttpServletRequest request) {
-		System.out.println(labelName);
 		int userId=tokenGenerator.authenticateToken(token);
 		List<Label> aliveLabels=labelRepository.findAllByUserId(userId);
 		if(aliveLabels!=null) {
@@ -94,13 +92,10 @@ public class LabelServiceImpl implements LabelServiceInf{
 	public boolean removeNoteLabel(String token, int noteId, int labelId) {
 		Note residingNote = noteRepository.findById(noteId).get();
 		List<Label> labels = residingNote.getLabelList();
-		System.out.println("this is my label list "+labels);
 		Label label = labelRepository.findById(labelId).get();
-		System.out.println("this is my label "+labels);
 
 		if(labels.remove(label)) {
 			residingNote.setLabelList(labels);
-			System.out.println("this is my Note "+residingNote);
 			//			System.out.println((labels));
 			//			if (!labels.isEmpty()) {
 			//				labels = labels.stream().filter(label -> label.getId() == labelId)

@@ -60,19 +60,14 @@ public class NoteServiceImpl implements NoteServiceInf {
 	@Override
 	public List<Note> retrieveNote(String token,HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
-		System.out.println("My user Id "+userId);
 		List<Note> notes=new ArrayList<Note>();
 		List<Collaborator> collaborators=collaboratorRepo.findAllByOwnerId(userId);
-		System.out.println("collaborators notes "+collaborators);
 		for(Collaborator collaborator:collaborators)
 		{
 			notes.add(noteRepository.findById(collaborator.getNoteId()).get());
-			System.out.println("noteTable"+notes);
 		}
 		List<Note> newNotes = noteRepository.findAllNoteByUserId(userId);
-		System.out.println(newNotes);
 		notes.addAll(newNotes);
-		System.out.println(notes);
 		return notes;
 	}
 
