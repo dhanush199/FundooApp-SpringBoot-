@@ -28,7 +28,6 @@ public class CollaboratorServiceImpl implements CollaboratorServiceInf{
 		return true;
 	}
 
-
 	@Transactional
 	public boolean removeCollaborator(String token, Collaborator colaborater) {
 		tokenGenerator.authenticateToken(token);
@@ -38,6 +37,5 @@ public class CollaboratorServiceImpl implements CollaboratorServiceInf{
 			return false;
 		}
 		return true;
-	}
-	
+	}	
 }

@@ -4,18 +4,18 @@
 		<item value="659" key="dialogHeight"/>
 		<item value="783" key="dialogWidth"/>
 		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
 			<item value="2"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
 			<item value="1"/>
 		</list>
 		<list key="orderedElements">
-			<item value="org.springframework.ide.eclipse.boot.dash.views.BootDashView"/>
 			<item value="org.eclipse.jdt.ui.PackageExplorer"/>
-			<item value="org.eclipse.ui.views.ProgressView"/>
 			<item value="org.eclipse.ui.views.ResourceNavigator"/>
 			<item value="org.eclipse.ui.console.ConsoleView"/>
+			<item value="org.springframework.ide.eclipse.boot.dash.views.BootDashView"/>
+			<item value="org.eclipse.ui.views.ProgressView"/>
 		</list>
 		<list key="orderedProviders">
 			<item value="org.eclipse.e4.ui.parts"/>
@@ -25,18 +25,21 @@
 			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
-			<item value="boo"/>
-			<item value="boot"/>
 			<item value="packa"/>
-			<item value="pro"/>
 			<item value="navi"/>
 			<item value="cons"/>
+			<item value="boo"/>
+			<item value="boot"/>
+			<item value="pro"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.jst.ws.ui.new"/>
+			<item value="org.eclipse.wst.XMLCategory"/>
+			<item value="org.eclipse.ui.Examples"/>
 		</list>
 	</section>
 	<section name="ImportExportAction">

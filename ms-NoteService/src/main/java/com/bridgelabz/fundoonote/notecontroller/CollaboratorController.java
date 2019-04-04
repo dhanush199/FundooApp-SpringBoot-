@@ -29,7 +29,6 @@ public class CollaboratorController {
 			return new ResponseEntity<String>("successfully Added",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("Something went wrong",HttpStatus.CONFLICT);
-
 	}
 	
 	@PutMapping("/remove-collabarator/{token:.+}")
@@ -38,7 +37,5 @@ public class CollaboratorController {
 			return new ResponseEntity<String>("successfully deleted",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("Something went wrong",HttpStatus.CONFLICT);
-
 	}
-	
 }

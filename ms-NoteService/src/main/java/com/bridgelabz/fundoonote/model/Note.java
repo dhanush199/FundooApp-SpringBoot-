@@ -23,8 +23,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name="Note")
 public class Note implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;	
+	
 	@ManyToMany(fetch=FetchType.EAGER,targetEntity= Label.class,cascade = CascadeType.ALL)
 	@JoinTable(name = "Note_Label", joinColumns = { @JoinColumn(name = "noteId") }, inverseJoinColumns = { @JoinColumn(name = "labelId") })
 	private List<Label> labelList;
@@ -59,9 +59,11 @@ public class Note implements Serializable {
 	private Timestamp createdTime;
 	
 	@Column(name="reminder")
-	//@CreationTimestamp
 	private Timestamp reminder;
 
+	private boolean isArchive=false;
+
+	
 	@OneToMany(mappedBy = "noteId", cascade = CascadeType.ALL)
 	private List<Collaborator> collaborators;
 	public List<Collaborator> getCollaborators() {
@@ -70,6 +72,16 @@ public class Note implements Serializable {
 
 	public void setCollaborators(List<Collaborator> collaborator) {
 		this.collaborators = collaborator;
+	}
+	
+	@OneToMany(mappedBy = "noteId", cascade = CascadeType.ALL)
+	private List<Image> imageList;
+	public List<Image> getImageList() {
+		return imageList;
+	}
+
+	public void setImageList(List<Image> imageList) {
+		this.imageList = imageList;
 	}
 
 
@@ -92,7 +104,6 @@ public class Note implements Serializable {
 		this.id = id;
 	}
 
-	private boolean isArchive=false;
 
 	public boolean getArchive() {
 		return isArchive;
@@ -183,6 +194,7 @@ public class Note implements Serializable {
 				+ collaborators + ", userId=" + userId + ", isArchive=" + isArchive + "]";
 	}
 
+	
 
 }
 

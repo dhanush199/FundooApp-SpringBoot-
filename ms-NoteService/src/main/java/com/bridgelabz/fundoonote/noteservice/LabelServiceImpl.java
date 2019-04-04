@@ -1,6 +1,7 @@
 package com.bridgelabz.fundoonote.noteservice;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -28,7 +29,6 @@ public class LabelServiceImpl implements LabelServiceInf{
 
 	public Label createLabel(String token,Label label, HttpServletRequest request){
 		int userId=tokenGenerator.authenticateToken(token);
-		System.out.println(userId);
 		if(userId>0) {
 			label.setUserId(userId);
 			Label sevedLabel=labelRepository.save(label);
@@ -62,6 +62,7 @@ public class LabelServiceImpl implements LabelServiceInf{
 		else
 			return null;
 	}
+	
 	@Transactional
 	public boolean deleteLabel(String token,String labelName, HttpServletRequest request) {
 		int userId=tokenGenerator.authenticateToken(token);
@@ -75,7 +76,6 @@ public class LabelServiceImpl implements LabelServiceInf{
 	}
 
 	public boolean mapNoteToLabel(String token, int noteId, int labelId) {
-		System.out.println("labelId"+labelId+" noteId "+noteId);
 		Note note = noteRepository.findById(noteId).get();
 		Label label = labelRepository.findById(labelId).get();
 		if(!note.getLabelList().contains(label)) {
@@ -92,22 +92,14 @@ public class LabelServiceImpl implements LabelServiceInf{
 	public boolean removeNoteLabel(String token, int noteId, int labelId) {
 		Note residingNote = noteRepository.findById(noteId).get();
 		List<Label> labels = residingNote.getLabelList();
-		Label label = labelRepository.findById(labelId).get();
-
-		if(labels.remove(label)) {
+		if (!labels.isEmpty()) {
+			labels = labels.stream().filter(item -> item.getId() != labelId)
+					.collect(Collectors.toList());
 			residingNote.setLabelList(labels);
-			//			System.out.println((labels));
-			//			if (!labels.isEmpty()) {
-			//				labels = labels.stream().filter(label -> label.getId() == labelId)
-			//						.collect(Collectors.toList());
-			//				residingNote.setLabelList(labels);
-			//				System.out.println("this is my label list "+labels);
 			noteRepository.save(residingNote);
 			return true;
-			//}
 		}
 		return false;
-
 	}
 }
 

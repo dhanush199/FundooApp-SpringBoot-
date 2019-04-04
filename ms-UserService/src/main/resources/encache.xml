@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cache name="user" maxElementsInMemory="50" eternal="false"
+    overflowToDisk="false" memoryStoreEvictionPolicy="LFU" />   

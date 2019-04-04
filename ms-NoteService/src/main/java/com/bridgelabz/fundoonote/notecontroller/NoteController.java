@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bridgelabz.fundoonote.model.Note;
 import com.bridgelabz.fundoonote.noteservice.NoteServiceInf;
@@ -72,5 +73,26 @@ public class NoteController {
 		else
 			return new ResponseEntity<String>("pls provide details correctly",HttpStatus.CONFLICT);
 	}
+	
+	@PutMapping("/uploadFile/{noteId:.+}")
+	public ResponseEntity<?> uploadFile(@PathVariable ("noteId")int noteId,@RequestParam ("file")MultipartFile uploadData
+	 ) {	      
+		if(noteService.saveImageFile(noteId,uploadData)!=null)
+			return new ResponseEntity<String>("Successfully uploaded", HttpStatus.OK);
+
+		else
+			return new ResponseEntity<String>("Something went wrong",HttpStatus.NOT_FOUND);
+	}
+	
+	@DeleteMapping("/uploadFile/{noteId:.+}")
+	public ResponseEntity<?> deleteFile(@PathVariable ("noteId")int noteId,@RequestHeader("imageId")int imageId
+	 ) {	      
+		if(noteService.deleteImageFile(noteId,imageId))
+			return new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+
+		else
+			return new ResponseEntity<String>("Something went wrong",HttpStatus.NOT_FOUND);
+	}
+
 	
 }

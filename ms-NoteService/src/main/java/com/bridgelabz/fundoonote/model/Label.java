@@ -25,7 +25,6 @@ public class Label implements Serializable {
 
 	private int userId=0;
 	
-//	private int labelId;
 
 	public int getId() {
 		return id;
@@ -40,24 +39,15 @@ public class Label implements Serializable {
 		this.userId = userId;
 	}
 
-//	public int getLabelId() {
-//		return labelId;
-//	}
-//	public void setLabelId(int labelId) {
-//		this.labelId = labelId;
-//	}
-
 	public String getLabelName() {
 		return labelName;
 	}
 	public void setLabelName(String labelName) {
 		this.labelName = labelName;
 	}
-
 	@Override
 	public String toString() {
-		return "Label [labelName=" + labelName + ", labelId=]";
+		return "Label [id=" + id + ", labelName=" + labelName + ", userId=" + userId + "]";
 	}
-
 
 }

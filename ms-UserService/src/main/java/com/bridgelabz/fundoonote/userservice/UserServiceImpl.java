@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,7 +37,6 @@ public class UserServiceImpl implements UserServiceInf {
 	public User register(User user, HttpServletRequest request, HttpServletResponse resp) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		if (userRepository.save(user) != null) {
-			System.out.println("User id is " + user.getId());
 			String id = String.valueOf(user.getId());
 			String token = tokenGenerator.generateToken(id);
 			resp.setHeader("token", token);
@@ -63,8 +63,6 @@ public class UserServiceImpl implements UserServiceInf {
 		User existingUser = userRepository.findUserByEmailId(user.getEmailId());
 		if (existingUser != null && bCryptPasswordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
 			if (existingUser.isActivationStatus() == true) {
-				System.out.println("User detail is=" + existingUser.getId() + "," + existingUser.getName() + ","
-						+ existingUser.getEmailId() + "," + existingUser.getMobileNumber());
 				String token = tokenGenerator.generateToken(String.valueOf(existingUser.getId()));
 				return token;
 			} else {
@@ -72,8 +70,7 @@ public class UserServiceImpl implements UserServiceInf {
 						existingUser, req, resp);
 				emailService.sendEmail("dhanushsh1995@gmail.com", "Verification Mail", verificationUrl);
 				return null;
-			}
-		}
+			}}
 		return null;
 	}
 
@@ -86,7 +83,6 @@ public class UserServiceImpl implements UserServiceInf {
 			userRepository.save(user);
 			return exixtingUser;
 		}
-
 		return null;
 	}
 
@@ -124,12 +120,10 @@ public class UserServiceImpl implements UserServiceInf {
 	public void deleteUser(String token) {
 		int userId = tokenGenerator.authenticateToken(token);
 		userRepository.deleteById(userId);
-
 	}
 
 	public User loadUserByUsername(String username) {
 		return null;
-
 	}
 
 	@Transactional
@@ -154,7 +148,7 @@ public class UserServiceImpl implements UserServiceInf {
 	public User getCoUserEmailId(int coUserId){
 		return userRepository.findById(coUserId).get();
 	}
-	
+
 	@Override
 	public User addCollaborator(User user,int NoteId, String token) {
 		int userId = tokenGenerator.authenticateToken(token);
@@ -175,4 +169,10 @@ public class UserServiceImpl implements UserServiceInf {
 	public User getUserByEmail(String emailId) {
 		return userRepository.findUserByEmailId(emailId);
 	}
+	
+//	@Cacheable("getActionsBycasId")
+//	public List<User> getActionsByCasId(){
+//		List<User> list=userRepository.findAll();
+//	    return list;
+//	} 
 }

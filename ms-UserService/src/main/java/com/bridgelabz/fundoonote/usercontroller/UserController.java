@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -66,7 +64,6 @@ public class UserController {
 			logger.log(Level.SEVERE, ex.toString(), ex);
 			return new ResponseEntity<String>("Please enter the valid details", HttpStatus.CONFLICT);
 		}
-
 	}
 
 	@GetMapping(value = "/userverification/{token:.+}")
@@ -133,7 +130,6 @@ public class UserController {
 			HttpServletResponse resp) {
 		userService.deleteUser(token);
 		return new ResponseEntity<String>("Successfully deleted", HttpStatus.FOUND);
-
 	}
 
 	@PutMapping("/uploadFile/{token:.+}")
@@ -143,9 +139,7 @@ public class UserController {
 			return new ResponseEntity<String>("Successfully uploaded", HttpStatus.OK);
 
 		else
-			return new ResponseEntity<String>("Something went wrong",
-					HttpStatus.NOT_FOUND);
-
+			return new ResponseEntity<String>("Something went wrong",HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping("/get-user/{token:.+}")
@@ -173,7 +167,7 @@ public class UserController {
 	public ResponseEntity<?> getAllUser(@PathVariable ("token")String token, HttpServletRequest request, HttpServletResponse resp) {
 		List<String> emailIds=userService.getAllUser(token);
 		if(emailIds!=null)
-		return new ResponseEntity<List<String>>(emailIds,HttpStatus.OK);
+			return new ResponseEntity<List<String>>(emailIds,HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
 	}
@@ -182,11 +176,11 @@ public class UserController {
 	public ResponseEntity<?> getCollabUser(@PathVariable ("emaiId")String emaiId,@RequestHeader ("token")String token,HttpServletRequest request, HttpServletResponse resp) {
 		User coUser=userService.getUserByEmail(emaiId);
 		if(coUser!=null)
-		return new ResponseEntity<User>(coUser,HttpStatus.OK);
+			return new ResponseEntity<User>(coUser,HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
 	}
-	
+
 	@GetMapping("/get-user-email/{token:.+}")
 	public ResponseEntity<?> getCoUser(@PathVariable ("token")String token,@RequestParam("coUserId")int coUserId, HttpServletRequest request, HttpServletResponse resp) {
 		if(token!=null) {
@@ -196,6 +190,5 @@ public class UserController {
 			}
 		}
 		return new ResponseEntity<String>("Went wrong",HttpStatus.CONFLICT);
-	}
-	
+	}	
 }

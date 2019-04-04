@@ -26,7 +26,7 @@ public class TokenGeneratorImpl implements TokenGeneratorInf {
 		System.out.println("ID: " + claims.getId());
 		return Integer.parseInt(claims.getId());
 	}
-	
+
 
 }
 

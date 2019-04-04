@@ -63,5 +63,7 @@ public class Collaborator implements Serializable{
 		return "Collaborator [id=" + id + ", collEmailId=" + collEmailId + ", noteId=" + noteId + ", ownerId=" + ownerId
 				+ "]";
 	}
+	
+	
 
 }

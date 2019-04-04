@@ -2,23 +2,30 @@ package com.bridgelabz.fundoonote.usermodel;
 
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.data.redis.core.RedisHash;
 
 @Entity
 @Table(name = "User")
+//@RedisHash("User")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 185652L;
 
+	@SequenceGenerator(name = "SEQ_GEN", sequenceName = "SEQ_USER", allocationSize = 1)
+	   
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
+	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN")	@Column(name = "id")
 	private int id;
 
 	@Column(name = "name")
@@ -35,8 +42,6 @@ public class User implements Serializable {
 		this.coEmailId = coEmailId;
 	}
 
-	
-
 	@Column(name = "coEmailId")
 	private String coEmailId;
 
@@ -48,8 +53,6 @@ public class User implements Serializable {
 	
 	@Lob
 	private byte[] image;
-	
-
 	
 	public byte[] getImage() {
 		return image;
@@ -116,7 +119,9 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", password=" + password
-				+ ", mobileNumber=" + mobileNumber + "]";
+		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", coEmailId=" + coEmailId + ", password="
+				+ password + ", mobileNumber=" + mobileNumber + ", image=" + Arrays.toString(image)
+				+ ", activationStatus=" + activationStatus + "]";
 	}
+
 }

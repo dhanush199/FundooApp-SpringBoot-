@@ -25,6 +25,7 @@ import com.bridgelabz.fundoonote.noteservice.LabelServiceInf;
 @Controller
 @RequestMapping("/user")
 public class LabelController {
+	
 	@Autowired
 	private LabelServiceInf labelService;
 

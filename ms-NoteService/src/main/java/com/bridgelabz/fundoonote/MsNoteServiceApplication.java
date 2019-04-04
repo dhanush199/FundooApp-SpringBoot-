@@ -9,5 +9,4 @@ public class MsNoteServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MsNoteServiceApplication.class, args);
 	}
-
 }
